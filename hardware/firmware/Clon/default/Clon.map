@@ -1,0 +1,423 @@
+Archive member included because of file (symbol)
+
+d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_exit.o)
+                              d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4/crtm8.o (exit)
+d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_clear_bss.o)
+                              Clon.o (__do_clear_bss)
+d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4\libc.a(eerd_block_atmega8.o)
+                              Clon.o (__eerd_block_m8)
+d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4\libc.a(eewr_block_atmega8.o)
+                              Clon.o (__eewr_block_m8)
+d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4\libc.a(eewr_byte_atmega8.o)
+                              d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4\libc.a(eewr_block_atmega8.o) (__eewr_r18_m8)
+
+Allocating common symbols
+Common symbol       size              file
+
+_OwClient_ScratchPad
+                    0x20              Clon.o
+_OwClient_AppReg    0x8               Clon.o
+_deviceQ_Is_Reset   0x1               Clon.o
+_OwClient_rom       0x8               Clon.o
+_OwClient_StatusReg
+                    0x1               Clon.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00002000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+fuse             0x00820000         0x00000400         rw !x
+lock             0x00830000         0x00000400         rw !x
+signature        0x00840000         0x00000400         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4/crtm8.o
+LOAD Clon.o
+LOAD d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a
+LOAD d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4\libc.a
+LOAD d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000      0x516
+ *(.vectors)
+ .vectors       0x00000000       0x26 d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4/crtm8.o
+                0x00000000                __vectors
+                0x00000000                __vector_default
+ *(.vectors)
+ *(.progmem.gcc*)
+ *(.progmem*)
+                0x00000026                . = ALIGN (0x2)
+                0x00000026                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x00000026        0x0 linker stubs
+ *(.trampolines*)
+                0x00000026                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x00000026                __ctors_start = .
+ *(.ctors)
+                0x00000026                __ctors_end = .
+                0x00000026                __dtors_start = .
+ *(.dtors)
+                0x00000026                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x00000026        0x0 d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4/crtm8.o
+                0x00000026                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x00000026        0xc d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4/crtm8.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x00000032       0x10 d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_clear_bss.o)
+                0x00000032                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x00000042        0x4 d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4/crtm8.o
+ *(.init9)
+ *(.text)
+ .text          0x00000046        0x2 d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4/crtm8.o
+                0x00000046                __vector_12
+                0x00000046                __bad_interrupt
+                0x00000046                __vector_6
+                0x00000046                __vector_3
+                0x00000046                __vector_11
+                0x00000046                __vector_13
+                0x00000046                __vector_17
+                0x00000046                __vector_7
+                0x00000046                __vector_5
+                0x00000046                __vector_4
+                0x00000046                __vector_2
+                0x00000046                __vector_15
+                0x00000046                __vector_8
+                0x00000046                __vector_14
+                0x00000046                __vector_10
+                0x00000046                __vector_16
+                0x00000046                __vector_18
+ .text          0x00000048      0x47e Clon.o
+                0x0000036a                __vector_1
+                0x00000134                OwClient_write_bit
+                0x00000244                OwClient_write_ScratchPad
+                0x00000112                OwClient_write_1
+                0x0000018e                OwClient_read_Rom
+                0x000002bc                OwClient_read_StatusReg
+                0x000001d2                OwClient_search_Rom
+                0x000000ae                OwClient_read_bit
+                0x000003ee                OwClient_copy_ScratchPad
+                0x00000460                chek
+                0x000003b4                OwClient_lock_AppReg
+                0x000002d6                OwClient_read_AppReg
+                0x00000174                OwClient_Present
+                0x00000150                OwClient_write_byte
+                0x00000048                Ping
+                0x000002fe                OwClient_check_Ram_CMD
+                0x00000482                main
+                0x000000da                OwClient_read_byte
+                0x0000034c                __vector_9
+                0x0000032c                MainInit
+                0x00000294                OwClient_write_AppReg
+                0x000000a8                OwClient_Init
+                0x00000124                OwClient_write_0
+                0x000001a8                OwClient_match_Rom
+                0x0000040c                OwClient_check_Rom_CMD
+                0x0000026c                OwClient_read_ScratchPad
+                0x00000078                OwClient_Pullup
+ .text          0x000004c6        0x0 d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_exit.o)
+ .text          0x000004c6        0x0 d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_clear_bss.o)
+ .text          0x000004c6        0x0 d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4\libc.a(eerd_block_atmega8.o)
+ .text          0x000004c6        0x0 d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4\libc.a(eewr_block_atmega8.o)
+ .text          0x000004c6        0x0 d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4\libc.a(eewr_byte_atmega8.o)
+                0x000004c6                . = ALIGN (0x2)
+ *(.text.*)
+ .text.libgcc   0x000004c6        0x0 d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_exit.o)
+ .text.libgcc   0x000004c6        0x0 d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_clear_bss.o)
+ .text.avr-libc
+                0x000004c6       0x20 d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4\libc.a(eerd_block_atmega8.o)
+                0x000004ca                __eerd_blraw_m8
+                0x000004c6                __eerd_block_m8
+ .text.avr-libc
+                0x000004e6       0x12 d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4\libc.a(eewr_block_atmega8.o)
+                0x000004e6                __eewr_block_m8
+ .text.avr-libc
+                0x000004f8       0x1a d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4\libc.a(eewr_byte_atmega8.o)
+                0x000004f8                __eewr_byte_m8
+                0x000004fa                __eewr_r18_m8
+                0x00000512                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x00000512        0x0 d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_exit.o)
+                0x00000512                exit
+                0x00000512                _exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x00000512        0x4 d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_exit.o)
+ *(.fini0)
+                0x00000516                _etext = .
+
+.data           0x00800060        0x0 load address 0x00000516
+                0x00800060                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x00800060        0x0 d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4/crtm8.o
+ .data          0x00800060        0x0 Clon.o
+ .data          0x00800060        0x0 d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_exit.o)
+ .data          0x00800060        0x0 d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_clear_bss.o)
+ .data          0x00800060        0x0 d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4\libc.a(eerd_block_atmega8.o)
+ .data          0x00800060        0x0 d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4\libc.a(eewr_block_atmega8.o)
+ .data          0x00800060        0x0 d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4\libc.a(eewr_byte_atmega8.o)
+ *(.data*)
+ *(.rodata)
+ *(.rodata*)
+ *(.gnu.linkonce.d*)
+                0x00800060                . = ALIGN (0x2)
+                0x00800060                _edata = .
+                0x00800060                PROVIDE (__data_end, .)
+
+.bss            0x00800060       0x34
+                0x00800060                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x00800060        0x0 d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4/crtm8.o
+ .bss           0x00800060        0x2 Clon.o
+                0x00800061                _deviceQ_last_line
+                0x00800060                _1_WIRE_ERROR
+ .bss           0x00800062        0x0 d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_exit.o)
+ .bss           0x00800062        0x0 d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_clear_bss.o)
+ .bss           0x00800062        0x0 d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4\libc.a(eerd_block_atmega8.o)
+ .bss           0x00800062        0x0 d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4\libc.a(eewr_block_atmega8.o)
+ .bss           0x00800062        0x0 d:/isoft/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4\libc.a(eewr_byte_atmega8.o)
+ *(.bss*)
+ *(COMMON)
+ COMMON         0x00800062       0x32 Clon.o
+                0x00800062                _OwClient_ScratchPad
+                0x00800082                _OwClient_AppReg
+                0x0080008a                _deviceQ_Is_Reset
+                0x0080008b                _OwClient_rom
+                0x00800093                _OwClient_StatusReg
+                0x00800094                PROVIDE (__bss_end, .)
+                0x00000516                __data_load_start = LOADADDR (.data)
+                0x00000516                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x00800094        0x0
+                0x00800094                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x00800094                PROVIDE (__noinit_end, .)
+                0x00800094                _end = .
+                0x00800094                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000       0x31
+ *(.eeprom*)
+ .eeprom        0x00810000       0x31 Clon.o
+                0x00810000                ERom
+                0x00810011                ERam
+                0x00810008                EStatusReg
+                0x00810009                EAppReg
+                0x00810031                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0x20
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x20 Clon.o
+
+.debug_pubnames
+                0x00000000      0x318
+ *(.debug_pubnames)
+ .debug_pubnames
+                0x00000000      0x318 Clon.o
+
+.debug_info     0x00000000      0x7bf
+ *(.debug_info)
+ .debug_info    0x00000000      0x7bf Clon.o
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev   0x00000000      0x1eb
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x1eb Clon.o
+
+.debug_line     0x00000000      0x6ed
+ *(.debug_line)
+ .debug_line    0x00000000      0x6ed Clon.o
+
+.debug_frame    0x00000000      0x1c0
+ *(.debug_frame)
+ .debug_frame   0x00000000      0x1c0 Clon.o
+
+.debug_str      0x00000000      0x35d
+ *(.debug_str)
+ .debug_str     0x00000000      0x35d Clon.o
+                                0x39c (size before relaxing)
+
+.debug_loc      0x00000000      0x2ec
+ *(.debug_loc)
+ .debug_loc     0x00000000      0x2ec Clon.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(Clon.elf elf32-avr)
+LOAD linker stubs

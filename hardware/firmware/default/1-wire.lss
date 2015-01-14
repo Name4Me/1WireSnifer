@@ -1,0 +1,2273 @@
+
+1-wire.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000af6  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .bss          00000144  00800060  00800060  00000b6a  2**0
+                  ALLOC
+  2 .debug_aranges 00000020  00000000  00000000  00000b6a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  3 .debug_pubnames 00000496  00000000  00000000  00000b8a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_info   00000ff4  00000000  00000000  00001020  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_abbrev 0000034f  00000000  00000000  00002014  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_line   00000cc5  00000000  00000000  00002363  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_frame  00000290  00000000  00000000  00003028  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_str    0000054f  00000000  00000000  000032b8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_loc    0000064a  00000000  00000000  00003807  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_ranges 00000018  00000000  00000000  00003e51  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	95 c0       	rjmp	.+298    	; 0x12c <__ctors_end>
+   2:	57 c3       	rjmp	.+1710   	; 0x6b2 <__vector_1>
+   4:	60 c3       	rjmp	.+1728   	; 0x6c6 <__vector_2>
+   6:	a2 c0       	rjmp	.+324    	; 0x14c <__bad_interrupt>
+   8:	a1 c0       	rjmp	.+322    	; 0x14c <__bad_interrupt>
+   a:	a0 c0       	rjmp	.+320    	; 0x14c <__bad_interrupt>
+   c:	9f c0       	rjmp	.+318    	; 0x14c <__bad_interrupt>
+   e:	9e c0       	rjmp	.+316    	; 0x14c <__bad_interrupt>
+  10:	46 c3       	rjmp	.+1676   	; 0x69e <__vector_8>
+  12:	3b c3       	rjmp	.+1654   	; 0x68a <__vector_9>
+  14:	9b c0       	rjmp	.+310    	; 0x14c <__bad_interrupt>
+  16:	75 c3       	rjmp	.+1770   	; 0x702 <__vector_11>
+  18:	60 c3       	rjmp	.+1728   	; 0x6da <__vector_12>
+  1a:	69 c3       	rjmp	.+1746   	; 0x6ee <__vector_13>
+  1c:	97 c0       	rjmp	.+302    	; 0x14c <__bad_interrupt>
+  1e:	96 c0       	rjmp	.+300    	; 0x14c <__bad_interrupt>
+  20:	95 c0       	rjmp	.+298    	; 0x14c <__bad_interrupt>
+  22:	94 c0       	rjmp	.+296    	; 0x14c <__bad_interrupt>
+  24:	93 c0       	rjmp	.+294    	; 0x14c <__bad_interrupt>
+
+00000026 <StringP>:
+  26:	52 65 61 64 79 00                                   Ready.
+
+0000002c <dscrc_table>:
+  2c:	00 5e bc e2 61 3f dd 83 c2 9c 7e 20 a3 fd 1f 41     .^..a?....~ ...A
+  3c:	9d c3 21 7f fc a2 40 1e 5f 01 e3 bd 3e 60 82 dc     ..!...@._...>`..
+  4c:	23 7d 9f c1 42 1c fe a0 e1 bf 5d 03 80 de 3c 62     #}..B.....]...<b
+  5c:	be e0 02 5c df 81 63 3d 7c 22 c0 9e 1d 43 a1 ff     ...\..c=|"...C..
+  6c:	46 18 fa a4 27 79 9b c5 84 da 38 66 e5 bb 59 07     F...'y....8f..Y.
+  7c:	db 85 67 39 ba e4 06 58 19 47 a5 fb 78 26 c4 9a     ..g9...X.G..x&..
+  8c:	65 3b d9 87 04 5a b8 e6 a7 f9 1b 45 c6 98 7a 24     e;...Z.....E..z$
+  9c:	f8 a6 44 1a 99 c7 25 7b 3a 64 86 d8 5b 05 e7 b9     ..D...%{:d..[...
+  ac:	8c d2 30 6e ed b3 51 0f 4e 10 f2 ac 2f 71 93 cd     ..0n..Q.N.../q..
+  bc:	11 4f ad f3 70 2e cc 92 d3 8d 6f 31 b2 ec 0e 50     .O..p.....o1...P
+  cc:	af f1 13 4d ce 90 72 2c 6d 33 d1 8f 0c 52 b0 ee     ...M..r,m3...R..
+  dc:	32 6c 8e d0 53 0d ef b1 f0 ae 4c 12 91 cf 2d 73     2l..S.....L...-s
+  ec:	ca 94 76 28 ab f5 17 49 08 56 b4 ea 69 37 d5 8b     ..v(...I.V..i7..
+  fc:	57 09 eb b5 36 68 8a d4 95 cb 29 77 f4 aa 48 16     W...6h....)w..H.
+ 10c:	e9 b7 55 0b 88 d6 34 6a 2b 75 97 c9 4a 14 f6 a8     ..U...4j+u..J...
+ 11c:	74 2a c8 96 15 4b a9 f7 b6 e8 0a 54 d7 89 6b 35     t*...K.....T..k5
+
+0000012c <__ctors_end>:
+ 12c:	11 24       	eor	r1, r1
+ 12e:	1f be       	out	0x3f, r1	; 63
+ 130:	cf e5       	ldi	r28, 0x5F	; 95
+ 132:	d4 e0       	ldi	r29, 0x04	; 4
+ 134:	de bf       	out	0x3e, r29	; 62
+ 136:	cd bf       	out	0x3d, r28	; 61
+
+00000138 <__do_clear_bss>:
+ 138:	11 e0       	ldi	r17, 0x01	; 1
+ 13a:	a0 e6       	ldi	r26, 0x60	; 96
+ 13c:	b0 e0       	ldi	r27, 0x00	; 0
+ 13e:	01 c0       	rjmp	.+2      	; 0x142 <.do_clear_bss_start>
+
+00000140 <.do_clear_bss_loop>:
+ 140:	1d 92       	st	X+, r1
+
+00000142 <.do_clear_bss_start>:
+ 142:	a4 3a       	cpi	r26, 0xA4	; 164
+ 144:	b1 07       	cpc	r27, r17
+ 146:	e1 f7       	brne	.-8      	; 0x140 <.do_clear_bss_loop>
+ 148:	a5 d4       	rcall	.+2378   	; 0xa94 <main>
+ 14a:	d3 c4       	rjmp	.+2470   	; 0xaf2 <_exit>
+
+0000014c <__bad_interrupt>:
+ 14c:	59 cf       	rjmp	.-334    	; 0x0 <__vectors>
+
+0000014e <USART_Init>:
+	
+	uint8_t tx_buf[30];
+	uint8_t rx_buf[50];
+
+void USART_Init() {
+	UBRRL = LO(bauddivider);//
+ 14e:	89 e1       	ldi	r24, 0x19	; 25
+ 150:	89 b9       	out	0x09, r24	; 9
+	UBRRH = HI(bauddivider);//
+ 152:	10 bc       	out	0x20, r1	; 32
+	UCSRA = 0;
+ 154:	1b b8       	out	0x0b, r1	; 11
+	UCSRB = _BV(RXEN)|_BV(TXEN)|1<<RXCIE|0<<TXCIE|1<<UDR;
+ 156:	2c b1       	in	r18, 0x0c	; 12
+ 158:	81 e0       	ldi	r24, 0x01	; 1
+ 15a:	90 e0       	ldi	r25, 0x00	; 0
+ 15c:	02 c0       	rjmp	.+4      	; 0x162 <USART_Init+0x14>
+ 15e:	88 0f       	add	r24, r24
+ 160:	99 1f       	adc	r25, r25
+ 162:	2a 95       	dec	r18
+ 164:	e2 f7       	brpl	.-8      	; 0x15e <USART_Init+0x10>
+ 166:	88 69       	ori	r24, 0x98	; 152
+ 168:	8a b9       	out	0x0a, r24	; 10
+	UCSRC = 1<<URSEL|1<<UCSZ0|1<<UCSZ1;
+ 16a:	86 e8       	ldi	r24, 0x86	; 134
+ 16c:	80 bd       	out	0x20, r24	; 32
+	}
+ 16e:	08 95       	ret
+
+00000170 <USART_Transmit>:
+
+
+void USART_Transmit(uint8_t data) {
+	while (!(UCSRA&(1<<UDRE)));	// Wait for empty transmit buffer
+ 170:	5d 9b       	sbis	0x0b, 5	; 11
+ 172:	fe cf       	rjmp	.-4      	; 0x170 <USART_Transmit>
+	tx_buf[0]=0;
+ 174:	10 92 86 01 	sts	0x0186, r1
+	UDR = data;			// Put data into buffer, send data
+ 178:	8c b9       	out	0x0c, r24	; 12
+	}
+ 17a:	08 95       	ret
+
+0000017c <USART_SendBuff>:
+
+void USART_SendBuff(char *tbadr) {
+ 17c:	20 e0       	ldi	r18, 0x00	; 0
+ 17e:	06 c0       	rjmp	.+12     	; 0x18c <USART_SendBuff+0x10>
+	UCSRC = 1<<URSEL|1<<UCSZ0|1<<UCSZ1;
+	}
+
+
+void USART_Transmit(uint8_t data) {
+	while (!(UCSRA&(1<<UDRE)));	// Wait for empty transmit buffer
+ 180:	5d 9b       	sbis	0x0b, 5	; 11
+ 182:	fe cf       	rjmp	.-4      	; 0x180 <USART_SendBuff+0x4>
+	tx_buf[0]=0;
+ 184:	10 92 86 01 	sts	0x0186, r1
+	UDR = data;			// Put data into buffer, send data
+ 188:	ec b9       	out	0x0c, r30	; 12
+
+void USART_SendBuff(char *tbadr) {
+	uint8_t i = 0;
+	while (((tbadr[i]!= '\n') & (tbadr[i]!= 0))) {
+		USART_Transmit((tbadr[i]));
+		i++;
+ 18a:	2f 5f       	subi	r18, 0xFF	; 255
+	UDR = data;			// Put data into buffer, send data
+	}
+
+void USART_SendBuff(char *tbadr) {
+	uint8_t i = 0;
+	while (((tbadr[i]!= '\n') & (tbadr[i]!= 0))) {
+ 18c:	fc 01       	movw	r30, r24
+ 18e:	e2 0f       	add	r30, r18
+ 190:	f1 1d       	adc	r31, r1
+ 192:	e0 81       	ld	r30, Z
+ 194:	ea 30       	cpi	r30, 0x0A	; 10
+ 196:	11 f0       	breq	.+4      	; 0x19c <USART_SendBuff+0x20>
+ 198:	ee 23       	and	r30, r30
+ 19a:	91 f7       	brne	.-28     	; 0x180 <USART_SendBuff+0x4>
+	UCSRC = 1<<URSEL|1<<UCSZ0|1<<UCSZ1;
+	}
+
+
+void USART_Transmit(uint8_t data) {
+	while (!(UCSRA&(1<<UDRE)));	// Wait for empty transmit buffer
+ 19c:	5d 9b       	sbis	0x0b, 5	; 11
+ 19e:	fe cf       	rjmp	.-4      	; 0x19c <USART_SendBuff+0x20>
+	tx_buf[0]=0;
+ 1a0:	10 92 86 01 	sts	0x0186, r1
+	UDR = data;			// Put data into buffer, send data
+ 1a4:	8a e0       	ldi	r24, 0x0A	; 10
+ 1a6:	8c b9       	out	0x0c, r24	; 12
+	while (((tbadr[i]!= '\n') & (tbadr[i]!= 0))) {
+		USART_Transmit((tbadr[i]));
+		i++;
+    };
+	USART_Transmit(10); 
+	}
+ 1a8:	08 95       	ret
+
+000001aa <USART_SendEND>:
+	UCSRC = 1<<URSEL|1<<UCSZ0|1<<UCSZ1;
+	}
+
+
+void USART_Transmit(uint8_t data) {
+	while (!(UCSRA&(1<<UDRE)));	// Wait for empty transmit buffer
+ 1aa:	5d 9b       	sbis	0x0b, 5	; 11
+ 1ac:	fe cf       	rjmp	.-4      	; 0x1aa <USART_SendEND>
+	tx_buf[0]=0;
+	UDR = data;			// Put data into buffer, send data
+ 1ae:	8d e0       	ldi	r24, 0x0D	; 13
+ 1b0:	8c b9       	out	0x0c, r24	; 12
+	UCSRC = 1<<URSEL|1<<UCSZ0|1<<UCSZ1;
+	}
+
+
+void USART_Transmit(uint8_t data) {
+	while (!(UCSRA&(1<<UDRE)));	// Wait for empty transmit buffer
+ 1b2:	5d 9b       	sbis	0x0b, 5	; 11
+ 1b4:	fe cf       	rjmp	.-4      	; 0x1b2 <USART_SendEND+0x8>
+	tx_buf[0]=0;
+ 1b6:	10 92 86 01 	sts	0x0186, r1
+	UDR = data;			// Put data into buffer, send data
+ 1ba:	8a e0       	ldi	r24, 0x0A	; 10
+ 1bc:	8c b9       	out	0x0c, r24	; 12
+	USART_Transmit(10); 
+	}
+void USART_SendEND(void) {
+	USART_Transmit(0x0D);
+	USART_Transmit(0x0A);	 
+	}
+ 1be:	08 95       	ret
+
+000001c0 <SendStr_P>:
+
+void SendStr_P(char *string) {				// Отправка строки из флеша
+ 1c0:	fc 01       	movw	r30, r24
+ 1c2:	90 91 86 01 	lds	r25, 0x0186
+ 1c6:	05 c0       	rjmp	.+10     	; 0x1d2 <SendStr_P+0x12>
+	UCSRC = 1<<URSEL|1<<UCSZ0|1<<UCSZ1;
+	}
+
+
+void USART_Transmit(uint8_t data) {
+	while (!(UCSRA&(1<<UDRE)));	// Wait for empty transmit buffer
+ 1c8:	5d 9b       	sbis	0x0b, 5	; 11
+ 1ca:	fe cf       	rjmp	.-4      	; 0x1c8 <SendStr_P+0x8>
+	tx_buf[0]=0;
+	UDR = data;			// Put data into buffer, send data
+ 1cc:	8c b9       	out	0x0c, r24	; 12
+	}
+
+void SendStr_P(char *string) {				// Отправка строки из флеша
+	while (pgm_read_byte(string)!='\0') {
+		USART_Transmit(pgm_read_byte(string));
+		string++;
+ 1ce:	31 96       	adiw	r30, 0x01	; 1
+ 1d0:	90 e0       	ldi	r25, 0x00	; 0
+	USART_Transmit(0x0D);
+	USART_Transmit(0x0A);	 
+	}
+
+void SendStr_P(char *string) {				// Отправка строки из флеша
+	while (pgm_read_byte(string)!='\0') {
+ 1d2:	84 91       	lpm	r24, Z+
+ 1d4:	88 23       	and	r24, r24
+ 1d6:	c1 f7       	brne	.-16     	; 0x1c8 <SendStr_P+0x8>
+ 1d8:	90 93 86 01 	sts	0x0186, r25
+		USART_Transmit(pgm_read_byte(string));
+		string++;
+		};
+	USART_SendEND();
+ 1dc:	e6 df       	rcall	.-52     	; 0x1aa <USART_SendEND>
+	}
+ 1de:	08 95       	ret
+
+000001e0 <docrc8>:
+
+//=======================================================================================================================
+//=================================== Ппроверка принятого от устройства по CRC ==========================================
+//=======================================================================================================================
+unsigned char docrc8(unsigned char value){
+   crc8 = pgm_read_byte(dscrc_table+(crc8 ^ value));
+ 1e0:	90 91 92 00 	lds	r25, 0x0092
+ 1e4:	98 27       	eor	r25, r24
+ 1e6:	ec e2       	ldi	r30, 0x2C	; 44
+ 1e8:	f0 e0       	ldi	r31, 0x00	; 0
+ 1ea:	e9 0f       	add	r30, r25
+ 1ec:	f1 1d       	adc	r31, r1
+ 1ee:	e4 91       	lpm	r30, Z+
+ 1f0:	e0 93 92 00 	sts	0x0092, r30
+   return crc8;
+}
+ 1f4:	8e 2f       	mov	r24, r30
+ 1f6:	08 95       	ret
+
+000001f8 <DeviceQ_Pullup>:
+
+//=======================================================================================================================
+//================================== Включить поддтяжку порта для зарядки устройства=====================================
+//=======================================================================================================================
+void DeviceQ_Pullup(bool A){
+ if (A) {ClrBit(DeviceQ_PORT);	NOP;
+ 1f8:	88 23       	and	r24, r24
+ 1fa:	69 f0       	breq	.+26     	; 0x216 <DeviceQ_Pullup+0x1e>
+ 1fc:	92 b3       	in	r25, 0x12	; 18
+ 1fe:	82 b3       	in	r24, 0x12	; 18
+ 200:	84 70       	andi	r24, 0x04	; 4
+ 202:	89 27       	eor	r24, r25
+ 204:	82 bb       	out	0x12, r24	; 18
+ 206:	00 00       	nop
+	 	 ClrBit(DeviceQ_DDR);	NOP;}				// для зарядки аккумулятора устройства на порту}
+ 208:	91 b3       	in	r25, 0x11	; 17
+ 20a:	81 b3       	in	r24, 0x11	; 17
+ 20c:	84 70       	andi	r24, 0x04	; 4
+ 20e:	89 27       	eor	r24, r25
+ 210:	81 bb       	out	0x11, r24	; 17
+ 212:	00 00       	nop
+ 214:	08 95       	ret
+ else 	{ClrBit(DeviceQ_PORT);	NOP;
+ 216:	92 b3       	in	r25, 0x12	; 18
+ 218:	82 b3       	in	r24, 0x12	; 18
+ 21a:	84 70       	andi	r24, 0x04	; 4
+ 21c:	89 27       	eor	r24, r25
+ 21e:	82 bb       	out	0x12, r24	; 18
+ 220:	00 00       	nop
+		 SetBit(DeviceQ_DDR);	NOP;}				// передача импульса RESET}
+ 222:	8a 9a       	sbi	0x11, 2	; 17
+ 224:	00 00       	nop
+ 226:	08 95       	ret
+
+00000228 <DeviceQ_Init>:
+//=======================================================================================================================
+//=============================установка начального направления порта для устройства=====================================
+//=======================================================================================================================
+void DeviceQ_Init(void){
+//	cli();
+	DeviceQ_Pullup(1);								// для зарядки аккумулятора устройства на порту
+ 228:	81 e0       	ldi	r24, 0x01	; 1
+ 22a:	e6 df       	rcall	.-52     	; 0x1f8 <DeviceQ_Pullup>
+//	DeviceQ_reset();
+//	sei();
+	}
+ 22c:	08 95       	ret
+
+0000022e <DeviceQ_reset>:
+
+//=======================================================================================================================
+//=========== Функция DeviceQ__RESET -> сбрасывает шину 1-Wire и определяет наличие подключенных устройств.==============
+//================= Сигнал сброса должен быть длинной минимум 480 мкс. Полный цикл 960 минимум ==========================
+//=======================================================================================================================
+unsigned char DeviceQ_reset(void){
+ 22e:	1f 93       	push	r17
+cli();
+ 230:	f8 94       	cli
+	_1_WIRE_ERROR = 0x00;							// нет устройства на шине
+ 232:	10 92 61 00 	sts	0x0061, r1
+
+	DeviceQ_Pullup(1);								// для зарядки аккумулятора устройства на порту
+ 236:	81 e0       	ldi	r24, 0x01	; 1
+ 238:	df df       	rcall	.-66     	; 0x1f8 <DeviceQ_Pullup>
+    can be achieved.
+*/
+void
+_delay_loop_1(uint8_t __count)
+{
+	__asm__ volatile (
+ 23a:	11 e0       	ldi	r17, 0x01	; 1
+ 23c:	81 2f       	mov	r24, r17
+ 23e:	8a 95       	dec	r24
+ 240:	f1 f7       	brne	.-4      	; 0x23e <DeviceQ_reset+0x10>
+
+
+	_delay_us(DeviceQ_delay_G);
+	DeviceQ_Pullup(0);								// передача импульса RESET
+ 242:	80 e0       	ldi	r24, 0x00	; 0
+ 244:	d9 df       	rcall	.-78     	; 0x1f8 <DeviceQ_Pullup>
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+ 246:	88 ee       	ldi	r24, 0xE8	; 232
+ 248:	93 e0       	ldi	r25, 0x03	; 3
+ 24a:	01 97       	sbiw	r24, 0x01	; 1
+ 24c:	f1 f7       	brne	.-4      	; 0x24a <DeviceQ_reset+0x1c>
+	_delay_us(DeviceQ_delay_H);						// задержка 480us по Datasheet
+	DeviceQ_Pullup(1);								// для зарядки аккумулятора устройства на порту
+ 24e:	81 e0       	ldi	r24, 0x01	; 1
+ 250:	d3 df       	rcall	.-90     	; 0x1f8 <DeviceQ_Pullup>
+    can be achieved.
+*/
+void
+_delay_loop_1(uint8_t __count)
+{
+	__asm__ volatile (
+ 252:	8a eb       	ldi	r24, 0xBA	; 186
+ 254:	8a 95       	dec	r24
+ 256:	f1 f7       	brne	.-4      	; 0x254 <DeviceQ_reset+0x26>
+	_delay_us(DeviceQ_delay_I);						// время реакции для ответа "PRESENCE" от 1-wire устройства 
+
+	if (GetBitL(DeviceQ_PIN))						// если на ножке логический 0 -> (устройство должно замкнуть на землю ногу на 240us) импульс PRESENCE
+ 258:	82 99       	sbic	0x10, 2	; 16
+ 25a:	02 c0       	rjmp	.+4      	; 0x260 <DeviceQ_reset+0x32>
+		_1_WIRE_ERROR = 0x01;						// по предварительным данным на линии есть устройство (ошибки нет)
+ 25c:	10 93 61 00 	sts	0x0061, r17
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+ 260:	80 ef       	ldi	r24, 0xF0	; 240
+ 262:	9a e0       	ldi	r25, 0x0A	; 10
+ 264:	01 97       	sbiw	r24, 0x01	; 1
+ 266:	f1 f7       	brne	.-4      	; 0x264 <DeviceQ_reset+0x36>
+
+	_delay_us(DeviceQ_delay_J);						// ждем окончания временного промежутка (420us) по Datasheet для перехода 1-wire устройства в рабочий режим и чтобы убедитьться, что это не замыкание на землю. 
+
+ if (GetBitL(DeviceQ_PIN))							// если на ножке логический 0 после выдержки ресета по Datasheets -> 
+ 268:	82 99       	sbic	0x10, 2	; 16
+ 26a:	03 c0       	rjmp	.+6      	; 0x272 <DeviceQ_reset+0x44>
+	_1_WIRE_ERROR = 0x02;							// err нет устройства на шине или замыкание на землю
+ 26c:	82 e0       	ldi	r24, 0x02	; 2
+ 26e:	80 93 61 00 	sts	0x0061, r24
+
+//	USART_Transmit(_1_WIRE_ERROR);
+//	USART_SendEND();
+
+ return _1_WIRE_ERROR;
+ 272:	80 91 61 00 	lds	r24, 0x0061
+sei();
+}
+ 276:	1f 91       	pop	r17
+ 278:	08 95       	ret
+
+0000027a <DeviceQ_write_1>:
+//=======================================================================================================================
+//========================================== WRITE_BIT -> запись 1 в шину ==================================================
+//=======================================================================================================================
+void DeviceQ_write_1(void){
+
+  	DeviceQ_Pullup(0);
+ 27a:	80 e0       	ldi	r24, 0x00	; 0
+ 27c:	bd df       	rcall	.-134    	; 0x1f8 <DeviceQ_Pullup>
+    can be achieved.
+*/
+void
+_delay_loop_1(uint8_t __count)
+{
+	__asm__ volatile (
+ 27e:	88 e2       	ldi	r24, 0x28	; 40
+ 280:	8a 95       	dec	r24
+ 282:	f1 f7       	brne	.-4      	; 0x280 <DeviceQ_write_1+0x6>
+		_delay_us(DeviceQ_delay_A);
+	DeviceQ_Pullup(1);
+ 284:	81 e0       	ldi	r24, 0x01	; 1
+ 286:	b8 df       	rcall	.-144    	; 0x1f8 <DeviceQ_Pullup>
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+ 288:	84 e5       	ldi	r24, 0x54	; 84
+ 28a:	91 e0       	ldi	r25, 0x01	; 1
+ 28c:	01 97       	sbiw	r24, 0x01	; 1
+ 28e:	f1 f7       	brne	.-4      	; 0x28c <DeviceQ_write_1+0x12>
+		_delay_us(DeviceQ_delay_B);
+}
+ 290:	08 95       	ret
+
+00000292 <DeviceQ_write_0>:
+//=======================================================================================================================
+//========================================== WRITE_BIT -> запись 0 в шину ==================================================
+//=======================================================================================================================
+void DeviceQ_write_0(void){
+
+ 	DeviceQ_Pullup(0);
+ 292:	80 e0       	ldi	r24, 0x00	; 0
+ 294:	b1 df       	rcall	.-158    	; 0x1f8 <DeviceQ_Pullup>
+    can be achieved.
+*/
+void
+_delay_loop_1(uint8_t __count)
+{
+	__asm__ volatile (
+ 296:	80 ea       	ldi	r24, 0xA0	; 160
+ 298:	8a 95       	dec	r24
+ 29a:	f1 f7       	brne	.-4      	; 0x298 <DeviceQ_write_0+0x6>
+		_delay_us(DeviceQ_delay_C);
+	DeviceQ_Pullup(1);
+ 29c:	81 e0       	ldi	r24, 0x01	; 1
+ 29e:	ac df       	rcall	.-168    	; 0x1f8 <DeviceQ_Pullup>
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+ 2a0:	8c ed       	ldi	r24, 0xDC	; 220
+ 2a2:	90 e0       	ldi	r25, 0x00	; 0
+ 2a4:	01 97       	sbiw	r24, 0x01	; 1
+ 2a6:	f1 f7       	brne	.-4      	; 0x2a4 <DeviceQ_write_0+0x12>
+		_delay_us(DeviceQ_delay_D);
+}
+ 2a8:	08 95       	ret
+
+000002aa <DeviceQ_write_bit>:
+
+//=======================================================================================================================
+//================================== WRITE_BIT -> запись бита в шину.====================================================
+//=======================================================================================================================
+void DeviceQ_write_bit(unsigned char data){
+cli();
+ 2aa:	f8 94       	cli
+  if (data !=0)		DeviceQ_write_1();				// выводим очередной бит начиная с младшего
+ 2ac:	88 23       	and	r24, r24
+ 2ae:	11 f0       	breq	.+4      	; 0x2b4 <DeviceQ_write_bit+0xa>
+ 2b0:	e4 df       	rcall	.-56     	; 0x27a <DeviceQ_write_1>
+ 2b2:	01 c0       	rjmp	.+2      	; 0x2b6 <DeviceQ_write_bit+0xc>
+  else				DeviceQ_write_0();
+ 2b4:	ee df       	rcall	.-36     	; 0x292 <DeviceQ_write_0>
+sei();
+ 2b6:	78 94       	sei
+}
+ 2b8:	08 95       	ret
+
+000002ba <DeviceQ_write_byte>:
+
+
+//=======================================================================================================================
+//=================================WRITE_BYTE -> запись байта в шину.====================================================
+//=======================================================================================================================
+void DeviceQ_write_byte(unsigned char data){
+ 2ba:	0f 93       	push	r16
+ 2bc:	1f 93       	push	r17
+ 2be:	08 2f       	mov	r16, r24
+cli();
+ 2c0:	f8 94       	cli
+ 2c2:	18 e0       	ldi	r17, 0x08	; 8
+ char count = 8;									// формируем счетчик бит
+ do{												// цикл вывода бит на шину
+  if (data & 0x01) 	DeviceQ_write_1();				// выводим очередной бит начиная с младшего
+ 2c4:	00 ff       	sbrs	r16, 0
+ 2c6:	02 c0       	rjmp	.+4      	; 0x2cc <DeviceQ_write_byte+0x12>
+ 2c8:	d8 df       	rcall	.-80     	; 0x27a <DeviceQ_write_1>
+ 2ca:	01 c0       	rjmp	.+2      	; 0x2ce <DeviceQ_write_byte+0x14>
+  else				DeviceQ_write_0();
+ 2cc:	e2 df       	rcall	.-60     	; 0x292 <DeviceQ_write_0>
+  data >>= 1;										// сдвигаем данные вправо и проверяем окончание цикла
+ }while(--count);
+ 2ce:	11 50       	subi	r17, 0x01	; 1
+ 2d0:	11 f0       	breq	.+4      	; 0x2d6 <DeviceQ_write_byte+0x1c>
+cli();
+ char count = 8;									// формируем счетчик бит
+ do{												// цикл вывода бит на шину
+  if (data & 0x01) 	DeviceQ_write_1();				// выводим очередной бит начиная с младшего
+  else				DeviceQ_write_0();
+  data >>= 1;										// сдвигаем данные вправо и проверяем окончание цикла
+ 2d2:	06 95       	lsr	r16
+ 2d4:	f7 cf       	rjmp	.-18     	; 0x2c4 <DeviceQ_write_byte+0xa>
+ }while(--count);
+sei();
+ 2d6:	78 94       	sei
+}
+ 2d8:	1f 91       	pop	r17
+ 2da:	0f 91       	pop	r16
+ 2dc:	08 95       	ret
+
+000002de <DeviceQ_read_bit>:
+
+//=======================================================================================================================
+//=================================READ_BIT -> чтение бита из шины.======================================================
+//=======================================================================================================================
+unsigned char DeviceQ_read_bit(void){
+cli();
+ 2de:	f8 94       	cli
+ unsigned char result = 0x00;
+	DeviceQ_Pullup(0);								// установить ножку в 0
+ 2e0:	80 e0       	ldi	r24, 0x00	; 0
+ 2e2:	8a df       	rcall	.-236    	; 0x1f8 <DeviceQ_Pullup>
+    can be achieved.
+*/
+void
+_delay_loop_1(uint8_t __count)
+{
+	__asm__ volatile (
+ 2e4:	88 e2       	ldi	r24, 0x28	; 40
+ 2e6:	8a 95       	dec	r24
+ 2e8:	f1 f7       	brne	.-4      	; 0x2e6 <DeviceQ_read_bit+0x8>
+
+	_delay_us(DeviceQ_delay_A);						// задержка 15us 
+	DeviceQ_Pullup(1);								// установить ножку на подтягиванием резистором (+4,7 в)
+ 2ea:	81 e0       	ldi	r24, 0x01	; 1
+ 2ec:	85 df       	rcall	.-246    	; 0x1f8 <DeviceQ_Pullup>
+ 2ee:	88 e1       	ldi	r24, 0x18	; 24
+ 2f0:	8a 95       	dec	r24
+ 2f2:	f1 f7       	brne	.-4      	; 0x2f0 <DeviceQ_read_bit+0x12>
+	_delay_us(DeviceQ_delay_E);						// задержка 15us на всякий (данные установились на порту)						
+
+    if (GetBitH(DeviceQ_PIN))	result = 0x01;		// если на ножке логическая 1 результат 1
+ 2f4:	80 b3       	in	r24, 0x10	; 16
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+ 2f6:	e2 e2       	ldi	r30, 0x22	; 34
+ 2f8:	f1 e0       	ldi	r31, 0x01	; 1
+ 2fa:	31 97       	sbiw	r30, 0x01	; 1
+ 2fc:	f1 f7       	brne	.-4      	; 0x2fa <DeviceQ_read_bit+0x1c>
+ 2fe:	90 e0       	ldi	r25, 0x00	; 0
+ 300:	96 95       	lsr	r25
+ 302:	87 95       	ror	r24
+ 304:	96 95       	lsr	r25
+ 306:	87 95       	ror	r24
+
+
+ return (result);									// возвращаем значение линии данных
+
+sei();
+}
+ 308:	81 70       	andi	r24, 0x01	; 1
+ 30a:	08 95       	ret
+
+0000030c <DeviceQ_read_byte>:
+
+
+//=======================================================================================================================
+//======================================READ_BYTE -> чтение байта из шины================================================
+//=======================================================================================================================
+unsigned char DeviceQ_read_byte(void){
+ 30c:	1f 93       	push	r17
+ 30e:	cf 93       	push	r28
+ 310:	df 93       	push	r29
+ cli();
+ 312:	f8 94       	cli
+ 314:	10 e0       	ldi	r17, 0x00	; 0
+ 316:	c0 e0       	ldi	r28, 0x00	; 0
+ 318:	d0 e0       	ldi	r29, 0x00	; 0
+  unsigned char	value =	0;
+
+  for(int i = 0; i < 8; i++)
+  	value |= DeviceQ_read_bit() << i;
+ 31a:	e1 df       	rcall	.-62     	; 0x2de <DeviceQ_read_bit>
+ 31c:	90 e0       	ldi	r25, 0x00	; 0
+ 31e:	0c 2e       	mov	r0, r28
+ 320:	02 c0       	rjmp	.+4      	; 0x326 <DeviceQ_read_byte+0x1a>
+ 322:	88 0f       	add	r24, r24
+ 324:	99 1f       	adc	r25, r25
+ 326:	0a 94       	dec	r0
+ 328:	e2 f7       	brpl	.-8      	; 0x322 <DeviceQ_read_byte+0x16>
+ 32a:	18 2b       	or	r17, r24
+//=======================================================================================================================
+unsigned char DeviceQ_read_byte(void){
+ cli();
+  unsigned char	value =	0;
+
+  for(int i = 0; i < 8; i++)
+ 32c:	21 96       	adiw	r28, 0x01	; 1
+ 32e:	c8 30       	cpi	r28, 0x08	; 8
+ 330:	d1 05       	cpc	r29, r1
+ 332:	99 f7       	brne	.-26     	; 0x31a <DeviceQ_read_byte+0xe>
+  	value |= DeviceQ_read_bit() << i;
+
+  return(value);
+ sei();
+}
+ 334:	81 2f       	mov	r24, r17
+ 336:	df 91       	pop	r29
+ 338:	cf 91       	pop	r28
+ 33a:	1f 91       	pop	r17
+ 33c:	08 95       	ret
+
+0000033e <DeviceQ_MATCH_ROM_COMMAND>:
+
+//=======================================================================================================================
+//================================Выбор единственного устройства на шине по адресу=======================================
+//================================= входящий параметр вместе с типом +ключ+CRC ==========================================
+//=======================================================================================================================
+void DeviceQ_MATCH_ROM_COMMAND(unsigned char * array_rom){
+ 33e:	0f 93       	push	r16
+ 340:	1f 93       	push	r17
+ 342:	cf 93       	push	r28
+ 344:	df 93       	push	r29
+ 346:	8c 01       	movw	r16, r24
+ 	DeviceQ_write_byte(MATCH_ROM); 											// посылаю команду поиска адреса если одно устройство
+ 348:	85 e5       	ldi	r24, 0x55	; 85
+ 34a:	b7 df       	rcall	.-146    	; 0x2ba <DeviceQ_write_byte>
+ 34c:	c0 e0       	ldi	r28, 0x00	; 0
+ 34e:	d0 e0       	ldi	r29, 0x00	; 0
+	for(int i=0;i<8;i++) DeviceQ_write_byte(array_rom[i]);					// Получаю адрес
+ 350:	f8 01       	movw	r30, r16
+ 352:	ec 0f       	add	r30, r28
+ 354:	fd 1f       	adc	r31, r29
+ 356:	80 81       	ld	r24, Z
+ 358:	b0 df       	rcall	.-160    	; 0x2ba <DeviceQ_write_byte>
+ 35a:	21 96       	adiw	r28, 0x01	; 1
+ 35c:	c8 30       	cpi	r28, 0x08	; 8
+ 35e:	d1 05       	cpc	r29, r1
+ 360:	b9 f7       	brne	.-18     	; 0x350 <DeviceQ_MATCH_ROM_COMMAND+0x12>
+}
+ 362:	df 91       	pop	r29
+ 364:	cf 91       	pop	r28
+ 366:	1f 91       	pop	r17
+ 368:	0f 91       	pop	r16
+ 36a:	08 95       	ret
+
+0000036c <DeviceQ_COPY_SCARTCHPAD_COMMAND>:
+
+//=======================================================================================================================
+//=========================================== Процедура COPY SCARTCHPAD =================================================
+//=======================================================================================================================
+void DeviceQ_COPY_SCARTCHPAD_COMMAND(void){
+ if (_1_WIRE_ERROR == 0x01){
+ 36c:	80 91 61 00 	lds	r24, 0x0061
+ 370:	81 30       	cpi	r24, 0x01	; 1
+ 372:	51 f4       	brne	.+20     	; 0x388 <DeviceQ_COPY_SCARTCHPAD_COMMAND+0x1c>
+		DeviceQ_write_byte(COPY_SCRATCHPAD); 								// посылаю команду типа питания устройства
+ 374:	88 e4       	ldi	r24, 0x48	; 72
+ 376:	a1 df       	rcall	.-190    	; 0x2ba <DeviceQ_write_byte>
+		DeviceQ_Pullup(1);
+ 378:	81 e0       	ldi	r24, 0x01	; 1
+ 37a:	3e df       	rcall	.-388    	; 0x1f8 <DeviceQ_Pullup>
+ 37c:	80 e9       	ldi	r24, 0x90	; 144
+ 37e:	91 e0       	ldi	r25, 0x01	; 1
+ 380:	01 97       	sbiw	r24, 0x01	; 1
+ 382:	f1 f7       	brne	.-4      	; 0x380 <DeviceQ_COPY_SCARTCHPAD_COMMAND+0x14>
+		_delay_us(200);														// гарантированое время на окончание вычислений 750 ms
+		DeviceQ_Pullup(0);
+ 384:	80 e0       	ldi	r24, 0x00	; 0
+ 386:	38 df       	rcall	.-400    	; 0x1f8 <DeviceQ_Pullup>
+ 388:	08 95       	ret
+
+0000038a <DeviceQ_WRITE_SCARTCHPAD_COMMAND>:
+
+//=======================================================================================================================
+//========================================= Процедура WRITE SCARTCHPAD ==================================================
+//=======================================================================================================================
+void DeviceQ_WRITE_SCARTCHPAD_COMMAND(unsigned char TH, unsigned char TL){
+ if (_1_WIRE_ERROR == 0x01){
+ 38a:	80 91 61 00 	lds	r24, 0x0061
+ 38e:	81 30       	cpi	r24, 0x01	; 1
+ 390:	11 f4       	brne	.+4      	; 0x396 <DeviceQ_WRITE_SCARTCHPAD_COMMAND+0xc>
+		DeviceQ_write_byte(WRITE_SCRATCHPAD); 								// посылаю команду типа питания устройства
+ 392:	8e e4       	ldi	r24, 0x4E	; 78
+ 394:	92 df       	rcall	.-220    	; 0x2ba <DeviceQ_write_byte>
+ 396:	08 95       	ret
+
+00000398 <DeviceQ_TargetSetup>:
+//============================================== вспомогательная функция ================================================
+//=======================================================================================================================
+void DeviceQ_TargetSetup(unsigned char family_code){
+   int i;
+ 
+   _deviceQ_rom_array[0] = family_code;								// посмотреть тип (класс) найденого устройства
+ 398:	80 93 6a 00 	sts	0x006A, r24
+ 39c:	eb e6       	ldi	r30, 0x6B	; 107
+ 39e:	f0 e0       	ldi	r31, 0x00	; 0
+
+   for (i = 1; i < 8; i++)     _deviceQ_rom_array[i] = 0;
+ 3a0:	11 92       	st	Z+, r1
+ 3a2:	80 e0       	ldi	r24, 0x00	; 0
+ 3a4:	e2 37       	cpi	r30, 0x72	; 114
+ 3a6:	f8 07       	cpc	r31, r24
+ 3a8:	d9 f7       	brne	.-10     	; 0x3a0 <DeviceQ_TargetSetup+0x8>
+
+   _deviceQ_last_discrepancy = 64;
+ 3aa:	80 e4       	ldi	r24, 0x40	; 64
+ 3ac:	90 e0       	ldi	r25, 0x00	; 0
+ 3ae:	90 93 65 00 	sts	0x0065, r25
+ 3b2:	80 93 64 00 	sts	0x0064, r24
+   _deviceQ_last_family_discrepancy = 0;
+ 3b6:	10 92 67 00 	sts	0x0067, r1
+ 3ba:	10 92 66 00 	sts	0x0066, r1
+   _deviceQ_last_device_flag = false;
+ 3be:	10 92 69 00 	sts	0x0069, r1
+ 3c2:	10 92 68 00 	sts	0x0068, r1
+}
+ 3c6:	08 95       	ret
+
+000003c8 <DeviceQ_FamilySkipSetup>:
+//=======================================================================================================================
+//======================================= Устоновка исключений во время поиска ==========================================
+//============================================== вспомогательная функция ================================================
+//=======================================================================================================================
+void DeviceQ_FamilySkipSetup(){  
+   _deviceQ_last_discrepancy = _deviceQ_last_family_discrepancy;
+ 3c8:	80 91 66 00 	lds	r24, 0x0066
+ 3cc:	90 91 67 00 	lds	r25, 0x0067
+ 3d0:	90 93 65 00 	sts	0x0065, r25
+ 3d4:	80 93 64 00 	sts	0x0064, r24
+   _deviceQ_last_family_discrepancy = 0;
+ 3d8:	10 92 67 00 	sts	0x0067, r1
+ 3dc:	10 92 66 00 	sts	0x0066, r1
+   
+   if (_deviceQ_last_discrepancy == 0)	_deviceQ_last_device_flag = true;										// check for end of list   
+ 3e0:	89 2b       	or	r24, r25
+ 3e2:	31 f4       	brne	.+12     	; 0x3f0 <DeviceQ_FamilySkipSetup+0x28>
+ 3e4:	81 e0       	ldi	r24, 0x01	; 1
+ 3e6:	90 e0       	ldi	r25, 0x00	; 0
+ 3e8:	90 93 69 00 	sts	0x0069, r25
+ 3ec:	80 93 68 00 	sts	0x0068, r24
+ 3f0:	08 95       	ret
+
+000003f2 <DeviceQ_SEARCH_ROM_COMMAND>:
+
+
+//=======================================================================================================================
+//===========================================Поиск устройств на шине по адресу===========================================
+//=======================================================================================================================
+int DeviceQ_SEARCH_ROM_COMMAND(void){
+ 3f2:	af 92       	push	r10
+ 3f4:	bf 92       	push	r11
+ 3f6:	cf 92       	push	r12
+ 3f8:	df 92       	push	r13
+ 3fa:	ef 92       	push	r14
+ 3fc:	ff 92       	push	r15
+ 3fe:	0f 93       	push	r16
+ 400:	1f 93       	push	r17
+ 402:	cf 93       	push	r28
+ 404:	df 93       	push	r29
+   id_bit_number = 1;																		// предустановка перед поиском
+   last_zero = 0;
+   rom_byte_number = 0;
+   rom_byte_mask = 1;
+   search_result = 0;
+   crc8 = 0;
+ 406:	10 92 92 00 	sts	0x0092, r1
+
+   if (!_deviceQ_last_device_flag){
+ 40a:	80 91 68 00 	lds	r24, 0x0068
+ 40e:	90 91 69 00 	lds	r25, 0x0069
+ 412:	89 2b       	or	r24, r25
+ 414:	09 f0       	breq	.+2      	; 0x418 <DeviceQ_SEARCH_ROM_COMMAND+0x26>
+ 416:	7b c0       	rjmp	.+246    	; 0x50e <__stack+0xaf>
+      if (!DeviceQ_reset()){																// if the last call was not the last one1-Wire reset reset the search
+ 418:	0a df       	rcall	.-492    	; 0x22e <DeviceQ_reset>
+ 41a:	88 23       	and	r24, r24
+ 41c:	09 f4       	brne	.+2      	; 0x420 <DeviceQ_SEARCH_ROM_COMMAND+0x2e>
+ 41e:	77 c0       	rjmp	.+238    	; 0x50e <__stack+0xaf>
+         _deviceQ_last_family_discrepancy = 0;
+         return false;
+      }
+
+
+      DeviceQ_write_byte(SEARCH_ROM);														// посылаем в порт команду поиска
+ 420:	80 ef       	ldi	r24, 0xF0	; 240
+ 422:	4b df       	rcall	.-362    	; 0x2ba <DeviceQ_write_byte>
+ 424:	c1 e0       	ldi	r28, 0x01	; 1
+ 426:	d0 e0       	ldi	r29, 0x00	; 0
+ 428:	aa 24       	eor	r10, r10
+ 42a:	bb 24       	eor	r11, r11
+ 42c:	cc 24       	eor	r12, r12
+ 42e:	dd 24       	eor	r13, r13
+ 430:	01 e0       	ldi	r16, 0x01	; 1
+
+      do {																					// read a bit and its complement
+         id_bit = DeviceQ_read_bit();
+ 432:	55 df       	rcall	.-342    	; 0x2de <DeviceQ_read_bit>
+ 434:	18 2f       	mov	r17, r24
+ 436:	e8 2e       	mov	r14, r24
+ 438:	ff 24       	eor	r15, r15
+         cmp_id_bit = DeviceQ_read_bit();
+ 43a:	51 df       	rcall	.-350    	; 0x2de <DeviceQ_read_bit>
+ 43c:	90 e0       	ldi	r25, 0x00	; 0
+ 
+         if ((id_bit == 1) && (cmp_id_bit == 1)){
+ 43e:	21 e0       	ldi	r18, 0x01	; 1
+ 440:	e2 16       	cp	r14, r18
+ 442:	f1 04       	cpc	r15, r1
+ 444:	29 f4       	brne	.+10     	; 0x450 <DeviceQ_SEARCH_ROM_COMMAND+0x5e>
+ 446:	81 30       	cpi	r24, 0x01	; 1
+ 448:	91 05       	cpc	r25, r1
+ 44a:	11 f4       	brne	.+4      	; 0x450 <DeviceQ_SEARCH_ROM_COMMAND+0x5e>
+		 	DeviceQ_reset();
+ 44c:	f0 de       	rcall	.-544    	; 0x22e <DeviceQ_reset>
+ 44e:	4b c0       	rjmp	.+150    	; 0x4e6 <__stack+0x87>
+			break;}																			// check for no devices on 1-wire
+         else{
+            if (id_bit != cmp_id_bit) search_direction = id_bit;							// all devices coupled have 0 or 1 bit write value for search
+ 450:	e8 16       	cp	r14, r24
+ 452:	f9 06       	cpc	r15, r25
+ 454:	e9 f4       	brne	.+58     	; 0x490 <__stack+0x31>
+            else{																			// if this discrepancy if before the Last Discrepancy on a previous next then pick the same as last time
+               if (id_bit_number < _deviceQ_last_discrepancy)        search_direction = ((_deviceQ_rom_array[rom_byte_number] & rom_byte_mask) > 0);
+ 456:	80 91 64 00 	lds	r24, 0x0064
+ 45a:	90 91 65 00 	lds	r25, 0x0065
+ 45e:	c8 17       	cp	r28, r24
+ 460:	d9 07       	cpc	r29, r25
+ 462:	3c f4       	brge	.+14     	; 0x472 <__stack+0x13>
+ 464:	f6 01       	movw	r30, r12
+ 466:	e6 59       	subi	r30, 0x96	; 150
+ 468:	ff 4f       	sbci	r31, 0xFF	; 255
+ 46a:	10 81       	ld	r17, Z
+ 46c:	10 23       	and	r17, r16
+ 46e:	39 f0       	breq	.+14     	; 0x47e <__stack+0x1f>
+ 470:	04 c0       	rjmp	.+8      	; 0x47a <__stack+0x1b>
+               else   search_direction = (id_bit_number == _deviceQ_last_discrepancy);		// if equal to last pick 1, if not then pick 0
+ 472:	10 e0       	ldi	r17, 0x00	; 0
+ 474:	c8 17       	cp	r28, r24
+ 476:	d9 07       	cpc	r29, r25
+ 478:	11 f4       	brne	.+4      	; 0x47e <__stack+0x1f>
+ 47a:	11 e0       	ldi	r17, 0x01	; 1
+ 47c:	0b c0       	rjmp	.+22     	; 0x494 <__stack+0x35>
+               if (search_direction == 0){													// if 0 was picked then record its position in LastZero
+                  last_zero = id_bit_number;
+               	  if (last_zero < 9)  _deviceQ_last_family_discrepancy = last_zero;			// check for Last discrepancy in family
+ 47e:	c9 30       	cpi	r28, 0x09	; 9
+ 480:	d1 05       	cpc	r29, r1
+ 482:	0c f0       	brlt	.+2      	; 0x486 <__stack+0x27>
+ 484:	5e c0       	rjmp	.+188    	; 0x542 <__stack+0xe3>
+ 486:	d0 93 67 00 	sts	0x0067, r29
+ 48a:	c0 93 66 00 	sts	0x0066, r28
+ 48e:	59 c0       	rjmp	.+178    	; 0x542 <__stack+0xe3>
+               }
+            }
+            
+            if (search_direction == 1)		_deviceQ_rom_array[rom_byte_number] |= rom_byte_mask;		// set or clear the bit in the ROM byte rom_byte_number with mask rom_byte_mask
+ 490:	11 30       	cpi	r17, 0x01	; 1
+ 492:	31 f4       	brne	.+12     	; 0x4a0 <__stack+0x41>
+ 494:	f6 01       	movw	r30, r12
+ 496:	e6 59       	subi	r30, 0x96	; 150
+ 498:	ff 4f       	sbci	r31, 0xFF	; 255
+ 49a:	80 81       	ld	r24, Z
+ 49c:	80 2b       	or	r24, r16
+ 49e:	07 c0       	rjmp	.+14     	; 0x4ae <__stack+0x4f>
+            else							_deviceQ_rom_array[rom_byte_number] &= ~rom_byte_mask;
+ 4a0:	f6 01       	movw	r30, r12
+ 4a2:	e6 59       	subi	r30, 0x96	; 150
+ 4a4:	ff 4f       	sbci	r31, 0xFF	; 255
+ 4a6:	80 2f       	mov	r24, r16
+ 4a8:	80 95       	com	r24
+ 4aa:	90 81       	ld	r25, Z
+ 4ac:	89 23       	and	r24, r25
+ 4ae:	80 83       	st	Z, r24
+
+            DeviceQ_write_bit(search_direction);											// serial number search direction write bit
+ 4b0:	81 2f       	mov	r24, r17
+ 4b2:	fb de       	rcall	.-522    	; 0x2aa <DeviceQ_write_bit>
+
+            id_bit_number++;																// increment the byte counter id_bit_number and shift the mask rom_byte_mask
+ 4b4:	21 96       	adiw	r28, 0x01	; 1
+            rom_byte_mask <<= 1;
+ 4b6:	00 0f       	add	r16, r16
+            
+            if (rom_byte_mask == 0){														// if the mask is 0 then go to new SerialNum byte rom_byte_number and reset mask
+ 4b8:	89 f4       	brne	.+34     	; 0x4dc <__stack+0x7d>
+
+//=======================================================================================================================
+//=================================== Ппроверка принятого от устройства по CRC ==========================================
+//=======================================================================================================================
+unsigned char docrc8(unsigned char value){
+   crc8 = pgm_read_byte(dscrc_table+(crc8 ^ value));
+ 4ba:	f6 01       	movw	r30, r12
+ 4bc:	e6 59       	subi	r30, 0x96	; 150
+ 4be:	ff 4f       	sbci	r31, 0xFF	; 255
+ 4c0:	e0 81       	ld	r30, Z
+ 4c2:	80 91 92 00 	lds	r24, 0x0092
+ 4c6:	e8 27       	eor	r30, r24
+ 4c8:	f0 e0       	ldi	r31, 0x00	; 0
+ 4ca:	e4 5d       	subi	r30, 0xD4	; 212
+ 4cc:	ff 4f       	sbci	r31, 0xFF	; 255
+ 4ce:	e4 91       	lpm	r30, Z+
+ 4d0:	e0 93 92 00 	sts	0x0092, r30
+            id_bit_number++;																// increment the byte counter id_bit_number and shift the mask rom_byte_mask
+            rom_byte_mask <<= 1;
+            
+            if (rom_byte_mask == 0){														// if the mask is 0 then go to new SerialNum byte rom_byte_number and reset mask
+                docrc8(_deviceQ_rom_array[rom_byte_number]);								// accumulate the CRC
+                rom_byte_number++;
+ 4d4:	08 94       	sec
+ 4d6:	c1 1c       	adc	r12, r1
+ 4d8:	d1 1c       	adc	r13, r1
+ 4da:	01 e0       	ldi	r16, 0x01	; 1
+                rom_byte_mask = 1;
+            }
+         }
+      } while(rom_byte_number < 8);															// loop until through all ROM bytes 0-7
+ 4dc:	88 e0       	ldi	r24, 0x08	; 8
+ 4de:	c8 16       	cp	r12, r24
+ 4e0:	d1 04       	cpc	r13, r1
+ 4e2:	0c f4       	brge	.+2      	; 0x4e6 <__stack+0x87>
+ 4e4:	a6 cf       	rjmp	.-180    	; 0x432 <DeviceQ_SEARCH_ROM_COMMAND+0x40>
+
+      
+      if (!((id_bit_number < 65) || (crc8 != 0))){											// if the search was successful then
+ 4e6:	c1 34       	cpi	r28, 0x41	; 65
+ 4e8:	d1 05       	cpc	r29, r1
+ 4ea:	8c f0       	brlt	.+34     	; 0x50e <__stack+0xaf>
+ 4ec:	80 91 92 00 	lds	r24, 0x0092
+ 4f0:	88 23       	and	r24, r24
+ 4f2:	69 f4       	brne	.+26     	; 0x50e <__stack+0xaf>
+         _deviceQ_last_discrepancy = last_zero;												// search successful so set _deviceQ_last_discrepancy,_deviceQ_last_device_flag,search_result
+ 4f4:	b0 92 65 00 	sts	0x0065, r11
+ 4f8:	a0 92 64 00 	sts	0x0064, r10
+         if (_deviceQ_last_discrepancy == 0) _deviceQ_last_device_flag = true;				// check for last device
+ 4fc:	ab 28       	or	r10, r11
+ 4fe:	19 f5       	brne	.+70     	; 0x546 <__stack+0xe7>
+ 500:	81 e0       	ldi	r24, 0x01	; 1
+ 502:	90 e0       	ldi	r25, 0x00	; 0
+ 504:	90 93 69 00 	sts	0x0069, r25
+ 508:	80 93 68 00 	sts	0x0068, r24
+ 50c:	1c c0       	rjmp	.+56     	; 0x546 <__stack+0xe7>
+      }
+   }
+
+   
+   if (!search_result || !_deviceQ_rom_array[0]){											// if no device found then reset counters so next 'search' will be like a first
+      _deviceQ_last_discrepancy = 0;
+ 50e:	10 92 65 00 	sts	0x0065, r1
+ 512:	10 92 64 00 	sts	0x0064, r1
+      _deviceQ_last_device_flag = false;
+ 516:	10 92 69 00 	sts	0x0069, r1
+ 51a:	10 92 68 00 	sts	0x0068, r1
+      _deviceQ_last_family_discrepancy = 0;
+ 51e:	10 92 67 00 	sts	0x0067, r1
+ 522:	10 92 66 00 	sts	0x0066, r1
+ 526:	20 e0       	ldi	r18, 0x00	; 0
+ 528:	30 e0       	ldi	r19, 0x00	; 0
+      search_result = false;
+   }
+
+   return search_result;
+}
+ 52a:	c9 01       	movw	r24, r18
+ 52c:	df 91       	pop	r29
+ 52e:	cf 91       	pop	r28
+ 530:	1f 91       	pop	r17
+ 532:	0f 91       	pop	r16
+ 534:	ff 90       	pop	r15
+ 536:	ef 90       	pop	r14
+ 538:	df 90       	pop	r13
+ 53a:	cf 90       	pop	r12
+ 53c:	bf 90       	pop	r11
+ 53e:	af 90       	pop	r10
+ 540:	08 95       	ret
+
+   
+   if (!search_result || !_deviceQ_rom_array[0]){											// if no device found then reset counters so next 'search' will be like a first
+      _deviceQ_last_discrepancy = 0;
+      _deviceQ_last_device_flag = false;
+      _deviceQ_last_family_discrepancy = 0;
+ 542:	5e 01       	movw	r10, r28
+ 544:	ad cf       	rjmp	.-166    	; 0x4a0 <__stack+0x41>
+         search_result = true;
+      }
+   }
+
+   
+   if (!search_result || !_deviceQ_rom_array[0]){											// if no device found then reset counters so next 'search' will be like a first
+ 546:	80 91 6a 00 	lds	r24, 0x006A
+ 54a:	88 23       	and	r24, r24
+ 54c:	01 f3       	breq	.-64     	; 0x50e <__stack+0xaf>
+ 54e:	21 e0       	ldi	r18, 0x01	; 1
+ 550:	30 e0       	ldi	r19, 0x00	; 0
+ 552:	eb cf       	rjmp	.-42     	; 0x52a <__stack+0xcb>
+
+00000554 <DeviceQ_FIND_DEVICE_CODE>:
+
+
+//=======================================================================================================================
+//============================================= Поиск устройств по типу =================================================
+//=======================================================================================================================
+int DeviceQ_FIND_DEVICE_CODE(unsigned char QDevice_code){
+ 554:	1f 93       	push	r17
+ 556:	18 2f       	mov	r17, r24
+ int i;
+ 
+ _deviceQ_find_count = 0;
+ 558:	10 92 62 00 	sts	0x0062, r1
+
+ DeviceQ_TargetSetup(QDevice_code);
+ 55c:	1d df       	rcall	.-454    	; 0x398 <DeviceQ_TargetSetup>
+ 55e:	1c c0       	rjmp	.+56     	; 0x598 <DeviceQ_FIND_DEVICE_CODE+0x44>
+
+ while (DeviceQ_SEARCH_ROM_COMMAND()){																// check for incorrect type
+	if (_deviceQ_rom_array[0] != QDevice_code) break;
+ 560:	80 91 6a 00 	lds	r24, 0x006A
+ 564:	81 17       	cp	r24, r17
+ 566:	d9 f4       	brne	.+54     	; 0x59e <DeviceQ_FIND_DEVICE_CODE+0x4a>
+ 
+  	for (i = 7; i >= 0; i--)	_deviceQ_all_rom[_deviceQ_find_count][i] = _deviceQ_rom_array[i];	// перенос найденного адреса в массив с индексом ([индекс], [тип, код, crc])
+ 568:	90 91 62 00 	lds	r25, 0x0062
+ 56c:	a1 e7       	ldi	r26, 0x71	; 113
+ 56e:	b0 e0       	ldi	r27, 0x00	; 0
+ 570:	e9 2f       	mov	r30, r25
+ 572:	f0 e0       	ldi	r31, 0x00	; 0
+ 574:	33 e0       	ldi	r19, 0x03	; 3
+ 576:	ee 0f       	add	r30, r30
+ 578:	ff 1f       	adc	r31, r31
+ 57a:	3a 95       	dec	r19
+ 57c:	e1 f7       	brne	.-8      	; 0x576 <DeviceQ_FIND_DEVICE_CODE+0x22>
+ 57e:	e6 56       	subi	r30, 0x66	; 102
+ 580:	ff 4f       	sbci	r31, 0xFF	; 255
+ 582:	8c 91       	ld	r24, X
+ 584:	80 83       	st	Z, r24
+ 586:	11 97       	sbiw	r26, 0x01	; 1
+ 588:	31 97       	sbiw	r30, 0x01	; 1
+ 58a:	80 e0       	ldi	r24, 0x00	; 0
+ 58c:	a9 36       	cpi	r26, 0x69	; 105
+ 58e:	b8 07       	cpc	r27, r24
+ 590:	c1 f7       	brne	.-16     	; 0x582 <DeviceQ_FIND_DEVICE_CODE+0x2e>
+    ++_deviceQ_find_count;
+ 592:	9f 5f       	subi	r25, 0xFF	; 255
+ 594:	90 93 62 00 	sts	0x0062, r25
+ 
+ _deviceQ_find_count = 0;
+
+ DeviceQ_TargetSetup(QDevice_code);
+
+ while (DeviceQ_SEARCH_ROM_COMMAND()){																// check for incorrect type
+ 598:	2c df       	rcall	.-424    	; 0x3f2 <DeviceQ_SEARCH_ROM_COMMAND>
+ 59a:	89 2b       	or	r24, r25
+ 59c:	09 f7       	brne	.-62     	; 0x560 <DeviceQ_FIND_DEVICE_CODE+0xc>
+  	for (i = 7; i >= 0; i--)	_deviceQ_all_rom[_deviceQ_find_count][i] = _deviceQ_rom_array[i];	// перенос найденного адреса в массив с индексом ([индекс], [тип, код, crc])
+    ++_deviceQ_find_count;
+ }
+
+ return _deviceQ_find_count;
+}
+ 59e:	80 91 62 00 	lds	r24, 0x0062
+ 5a2:	90 e0       	ldi	r25, 0x00	; 0
+ 5a4:	1f 91       	pop	r17
+ 5a6:	08 95       	ret
+
+000005a8 <DeviceQ_Next>:
+
+//=======================================================================================================================
+//=================================== Поиск следующего устройства на шине ===============================================
+//=======================================================================================================================
+int DeviceQ_Next(){ 
+   return DeviceQ_SEARCH_ROM_COMMAND();  							// Переход на основную функцию поиска
+ 5a8:	24 df       	rcall	.-440    	; 0x3f2 <DeviceQ_SEARCH_ROM_COMMAND>
+}
+ 5aa:	08 95       	ret
+
+000005ac <DeviceQ_First>:
+//=======================================================================================================================
+//====================================== Поиск первого устройств на шине ================================================
+//=======================================================================================================================
+int DeviceQ_First(){
+	
+   _deviceQ_last_discrepancy = 0;									// сброс флагов перед поиском первого
+ 5ac:	10 92 65 00 	sts	0x0065, r1
+ 5b0:	10 92 64 00 	sts	0x0064, r1
+   _deviceQ_last_device_flag = false;
+ 5b4:	10 92 69 00 	sts	0x0069, r1
+ 5b8:	10 92 68 00 	sts	0x0068, r1
+   _deviceQ_last_family_discrepancy = 0;
+ 5bc:	10 92 67 00 	sts	0x0067, r1
+ 5c0:	10 92 66 00 	sts	0x0066, r1
+
+   return DeviceQ_SEARCH_ROM_COMMAND();  							// Переход на основную функцию поиска
+ 5c4:	16 df       	rcall	.-468    	; 0x3f2 <DeviceQ_SEARCH_ROM_COMMAND>
+
+
+}
+ 5c6:	08 95       	ret
+
+000005c8 <DeviceQ_FIND_DEVICE_EXCEPTION_CODE>:
+
+//=======================================================================================================================
+//=================================== Поиск устройств по типу не соответствующих перечню=================================
+//===============================================0x04;0x1A;0x01;0x23;0x0A;0x10===========================================
+//=======================================================================================================================
+int DeviceQ_FIND_DEVICE_EXCEPTION_CODE(void){
+ 5c8:	cf 93       	push	r28
+ 5ca:	df 93       	push	r29
+ int rslt,i;
+
+ _deviceQ_find_count = 0;
+ 5cc:	10 92 62 00 	sts	0x0062, r1
+
+ rslt = DeviceQ_First();																					// поиск хотя бы одного устройства
+ 5d0:	ed df       	rcall	.-38     	; 0x5ac <DeviceQ_First>
+//=======================================================================================================================
+void DeviceQ_FamilySkipSetup(){  
+   _deviceQ_last_discrepancy = _deviceQ_last_family_discrepancy;
+   _deviceQ_last_family_discrepancy = 0;
+   
+   if (_deviceQ_last_discrepancy == 0)	_deviceQ_last_device_flag = true;										// check for end of list   
+ 5d2:	c1 e0       	ldi	r28, 0x01	; 1
+ 5d4:	d0 e0       	ldi	r29, 0x00	; 0
+ 5d6:	3a c0       	rjmp	.+116    	; 0x64c <DeviceQ_FIND_DEVICE_EXCEPTION_CODE+0x84>
+
+ _deviceQ_find_count = 0;
+
+ rslt = DeviceQ_First();																					// поиск хотя бы одного устройства
+ while (rslt){																								// check for incorrect type
+      if ((_deviceQ_rom_array[0] == 0x04) || (_deviceQ_rom_array[0] == 0x1A) || 
+ 5d8:	80 91 6a 00 	lds	r24, 0x006A
+ 5dc:	84 30       	cpi	r24, 0x04	; 4
+ 5de:	51 f0       	breq	.+20     	; 0x5f4 <DeviceQ_FIND_DEVICE_EXCEPTION_CODE+0x2c>
+ 5e0:	8a 31       	cpi	r24, 0x1A	; 26
+ 5e2:	41 f0       	breq	.+16     	; 0x5f4 <DeviceQ_FIND_DEVICE_EXCEPTION_CODE+0x2c>
+ 5e4:	81 30       	cpi	r24, 0x01	; 1
+ 5e6:	31 f0       	breq	.+12     	; 0x5f4 <DeviceQ_FIND_DEVICE_EXCEPTION_CODE+0x2c>
+ 5e8:	83 32       	cpi	r24, 0x23	; 35
+ 5ea:	21 f0       	breq	.+8      	; 0x5f4 <DeviceQ_FIND_DEVICE_EXCEPTION_CODE+0x2c>
+ 5ec:	8a 30       	cpi	r24, 0x0A	; 10
+ 5ee:	11 f0       	breq	.+4      	; 0x5f4 <DeviceQ_FIND_DEVICE_EXCEPTION_CODE+0x2c>
+ 5f0:	80 31       	cpi	r24, 0x10	; 16
+ 5f2:	99 f4       	brne	.+38     	; 0x61a <DeviceQ_FIND_DEVICE_EXCEPTION_CODE+0x52>
+//=======================================================================================================================
+//======================================= Устоновка исключений во время поиска ==========================================
+//============================================== вспомогательная функция ================================================
+//=======================================================================================================================
+void DeviceQ_FamilySkipSetup(){  
+   _deviceQ_last_discrepancy = _deviceQ_last_family_discrepancy;
+ 5f4:	80 91 66 00 	lds	r24, 0x0066
+ 5f8:	90 91 67 00 	lds	r25, 0x0067
+ 5fc:	90 93 65 00 	sts	0x0065, r25
+ 600:	80 93 64 00 	sts	0x0064, r24
+   _deviceQ_last_family_discrepancy = 0;
+ 604:	10 92 67 00 	sts	0x0067, r1
+ 608:	10 92 66 00 	sts	0x0066, r1
+   
+   if (_deviceQ_last_discrepancy == 0)	_deviceQ_last_device_flag = true;										// check for end of list   
+ 60c:	89 2b       	or	r24, r25
+ 60e:	e9 f4       	brne	.+58     	; 0x64a <DeviceQ_FIND_DEVICE_EXCEPTION_CODE+0x82>
+ 610:	d0 93 69 00 	sts	0x0069, r29
+ 614:	c0 93 68 00 	sts	0x0068, r28
+ 618:	18 c0       	rjmp	.+48     	; 0x64a <DeviceQ_FIND_DEVICE_EXCEPTION_CODE+0x82>
+      if ((_deviceQ_rom_array[0] == 0x04) || (_deviceQ_rom_array[0] == 0x1A) || 
+          (_deviceQ_rom_array[0] == 0x01) || (_deviceQ_rom_array[0] == 0x23) ||
+          (_deviceQ_rom_array[0] == 0x0A) || (_deviceQ_rom_array[0] == 0x10))
+          DeviceQ_FamilySkipSetup();
+      else{																									// print device found
+   		 for (i = 8; i >= 0; i--)	_deviceQ_all_rom[_deviceQ_find_count][i] = _deviceQ_rom_array[i];		// перенос найденного адреса в массив с индексом ([индекс], [тип, код, crc])
+ 61a:	90 91 62 00 	lds	r25, 0x0062
+ 61e:	a2 e7       	ldi	r26, 0x72	; 114
+ 620:	b0 e0       	ldi	r27, 0x00	; 0
+ 622:	e9 2f       	mov	r30, r25
+ 624:	f0 e0       	ldi	r31, 0x00	; 0
+ 626:	43 e0       	ldi	r20, 0x03	; 3
+ 628:	ee 0f       	add	r30, r30
+ 62a:	ff 1f       	adc	r31, r31
+ 62c:	4a 95       	dec	r20
+ 62e:	e1 f7       	brne	.-8      	; 0x628 <DeviceQ_FIND_DEVICE_EXCEPTION_CODE+0x60>
+ 630:	e5 56       	subi	r30, 0x65	; 101
+ 632:	ff 4f       	sbci	r31, 0xFF	; 255
+ 634:	8c 91       	ld	r24, X
+ 636:	80 83       	st	Z, r24
+ 638:	11 97       	sbiw	r26, 0x01	; 1
+ 63a:	31 97       	sbiw	r30, 0x01	; 1
+ 63c:	80 e0       	ldi	r24, 0x00	; 0
+ 63e:	a9 36       	cpi	r26, 0x69	; 105
+ 640:	b8 07       	cpc	r27, r24
+ 642:	c1 f7       	brne	.-16     	; 0x634 <DeviceQ_FIND_DEVICE_EXCEPTION_CODE+0x6c>
+    	 ++_deviceQ_find_count;
+ 644:	9f 5f       	subi	r25, 0xFF	; 255
+ 646:	90 93 62 00 	sts	0x0062, r25
+
+//=======================================================================================================================
+//=================================== Поиск следующего устройства на шине ===============================================
+//=======================================================================================================================
+int DeviceQ_Next(){ 
+   return DeviceQ_SEARCH_ROM_COMMAND();  							// Переход на основную функцию поиска
+ 64a:	d3 de       	rcall	.-602    	; 0x3f2 <DeviceQ_SEARCH_ROM_COMMAND>
+ int rslt,i;
+
+ _deviceQ_find_count = 0;
+
+ rslt = DeviceQ_First();																					// поиск хотя бы одного устройства
+ while (rslt){																								// check for incorrect type
+ 64c:	89 2b       	or	r24, r25
+ 64e:	21 f6       	brne	.-120    	; 0x5d8 <DeviceQ_FIND_DEVICE_EXCEPTION_CODE+0x10>
+
+      rslt = DeviceQ_Next();
+   }
+
+ return _deviceQ_find_count;
+}
+ 650:	80 91 62 00 	lds	r24, 0x0062
+ 654:	90 e0       	ldi	r25, 0x00	; 0
+ 656:	df 91       	pop	r29
+ 658:	cf 91       	pop	r28
+ 65a:	08 95       	ret
+
+0000065c <MainInit>:
+	void MainInit(void);	
+	void Catch(void);
+
+	void MainInit(void){
+
+	DDRD 	|= 0<<PD2|0<<PD3;
+ 65c:	81 b3       	in	r24, 0x11	; 17
+ 65e:	81 bb       	out	0x11, r24	; 17
+	PORTD |= 0<<PD2|0<<PD3;
+ 660:	82 b3       	in	r24, 0x12	; 18
+ 662:	82 bb       	out	0x12, r24	; 18
+
+	DDRC |= 1<<PC5;
+ 664:	a5 9a       	sbi	0x14, 5	; 20
+	PORTC |= 1<<PC5;
+ 666:	ad 9a       	sbi	0x15, 5	; 21
+	
+	//TIMSK=1<<TOIE0;//Разрешение припиваний Т0
+	//TCCR0=1		; //Запуск Т0 (предделитель 0-Off, 1-1, 2-8, 3-64, 4-256, 5-1024)
+
+	//hd44780_init();		
+	USART_Init(); 
+ 668:	72 dd       	rcall	.-1308   	; 0x14e <USART_Init>
+
+	DeviceQ_Init();											//Установка направления порта 1-wire
+ 66a:	de dd       	rcall	.-1092   	; 0x228 <DeviceQ_Init>
+	//sprintf((char *)tx_buf,"Count Device = %d\n\r", _deviceQ_find_count);
+	//USART_SendBuff(tx_buf);
+	//USART_SendBuff(_deviceQ_all_rom[1]);
+	
+
+	sei();
+ 66c:	78 94       	sei
+  //hd44780_outcmd(HD44780_ENTMODE(1, 0));	// Entry mode: auto-increment address counter, no display shift in effect.
+  //hd44780_outcmd(HD44780_DISPCTL(1, 0, 0));	// Enable display, activate non-blinking cursor.
+
+	//LCD_SendFlash(PSTR("Ready"));
+
+	};
+ 66e:	08 95       	ret
+
+00000670 <USART_SendBuffCode>:
+
+
+void USART_SendBuffCode(u08 *tbadr,u08 size) {
+ 670:	fc 01       	movw	r30, r24
+ 672:	08 c0       	rjmp	.+16     	; 0x684 <USART_SendBuffCode+0x14>
+	uint8_t i = 0;
+	while (size > 0) {
+		USART_Transmit((tbadr[i]));
+ 674:	80 81       	ld	r24, Z
+	UCSRC = 1<<URSEL|1<<UCSZ0|1<<UCSZ1;
+	}
+
+
+void USART_Transmit(uint8_t data) {
+	while (!(UCSRA&(1<<UDRE)));	// Wait for empty transmit buffer
+ 676:	5d 9b       	sbis	0x0b, 5	; 11
+ 678:	fe cf       	rjmp	.-4      	; 0x676 <USART_SendBuffCode+0x6>
+	tx_buf[0]=0;
+ 67a:	10 92 86 01 	sts	0x0186, r1
+	UDR = data;			// Put data into buffer, send data
+ 67e:	8c b9       	out	0x0c, r24	; 12
+		i++;
+		size--;
+ 680:	61 50       	subi	r22, 0x01	; 1
+ 682:	31 96       	adiw	r30, 0x01	; 1
+	};
+
+
+void USART_SendBuffCode(u08 *tbadr,u08 size) {
+	uint8_t i = 0;
+	while (size > 0) {
+ 684:	66 23       	and	r22, r22
+ 686:	b1 f7       	brne	.-20     	; 0x674 <USART_SendBuffCode+0x4>
+		USART_Transmit((tbadr[i]));
+		i++;
+		size--;
+    };
+	}
+ 688:	08 95       	ret
+
+0000068a <__vector_9>:
+ISR (TIMER0_OVF_vect) {
+ 68a:	1f 92       	push	r1
+ 68c:	0f 92       	push	r0
+ 68e:	0f b6       	in	r0, 0x3f	; 63
+ 690:	0f 92       	push	r0
+ 692:	11 24       	eor	r1, r1
+}
+ 694:	0f 90       	pop	r0
+ 696:	0f be       	out	0x3f, r0	; 63
+ 698:	0f 90       	pop	r0
+ 69a:	1f 90       	pop	r1
+ 69c:	18 95       	reti
+
+0000069e <__vector_8>:
+ISR (TIMER1_OVF_vect) {
+ 69e:	1f 92       	push	r1
+ 6a0:	0f 92       	push	r0
+ 6a2:	0f b6       	in	r0, 0x3f	; 63
+ 6a4:	0f 92       	push	r0
+ 6a6:	11 24       	eor	r1, r1
+}
+ 6a8:	0f 90       	pop	r0
+ 6aa:	0f be       	out	0x3f, r0	; 63
+ 6ac:	0f 90       	pop	r0
+ 6ae:	1f 90       	pop	r1
+ 6b0:	18 95       	reti
+
+000006b2 <__vector_1>:
+
+ISR(INT0_vect){				// Обработчик прерывания INT0
+ 6b2:	1f 92       	push	r1
+ 6b4:	0f 92       	push	r0
+ 6b6:	0f b6       	in	r0, 0x3f	; 63
+ 6b8:	0f 92       	push	r0
+ 6ba:	11 24       	eor	r1, r1
+
+	}
+ 6bc:	0f 90       	pop	r0
+ 6be:	0f be       	out	0x3f, r0	; 63
+ 6c0:	0f 90       	pop	r0
+ 6c2:	1f 90       	pop	r1
+ 6c4:	18 95       	reti
+
+000006c6 <__vector_2>:
+
+ISR(INT1_vect){				// Обработчик прерывания INT1
+ 6c6:	1f 92       	push	r1
+ 6c8:	0f 92       	push	r0
+ 6ca:	0f b6       	in	r0, 0x3f	; 63
+ 6cc:	0f 92       	push	r0
+ 6ce:	11 24       	eor	r1, r1
+	}
+ 6d0:	0f 90       	pop	r0
+ 6d2:	0f be       	out	0x3f, r0	; 63
+ 6d4:	0f 90       	pop	r0
+ 6d6:	1f 90       	pop	r1
+ 6d8:	18 95       	reti
+
+000006da <__vector_12>:
+
+ISR (USART_UDRE_vect) {
+ 6da:	1f 92       	push	r1
+ 6dc:	0f 92       	push	r0
+ 6de:	0f b6       	in	r0, 0x3f	; 63
+ 6e0:	0f 92       	push	r0
+ 6e2:	11 24       	eor	r1, r1
+	}
+ 6e4:	0f 90       	pop	r0
+ 6e6:	0f be       	out	0x3f, r0	; 63
+ 6e8:	0f 90       	pop	r0
+ 6ea:	1f 90       	pop	r1
+ 6ec:	18 95       	reti
+
+000006ee <__vector_13>:
+
+ISR(USART_TXC_vect) {
+ 6ee:	1f 92       	push	r1
+ 6f0:	0f 92       	push	r0
+ 6f2:	0f b6       	in	r0, 0x3f	; 63
+ 6f4:	0f 92       	push	r0
+ 6f6:	11 24       	eor	r1, r1
+	}
+ 6f8:	0f 90       	pop	r0
+ 6fa:	0f be       	out	0x3f, r0	; 63
+ 6fc:	0f 90       	pop	r0
+ 6fe:	1f 90       	pop	r1
+ 700:	18 95       	reti
+
+00000702 <__vector_11>:
+
+ISR(USART_RXC_vect) {
+ 702:	1f 92       	push	r1
+ 704:	0f 92       	push	r0
+ 706:	0f b6       	in	r0, 0x3f	; 63
+ 708:	0f 92       	push	r0
+ 70a:	11 24       	eor	r1, r1
+ 70c:	8f 93       	push	r24
+ 70e:	9f 93       	push	r25
+ 710:	ef 93       	push	r30
+ 712:	ff 93       	push	r31
+	u08 DATA; 
+	DATA = UDR; 
+ 714:	9c b1       	in	r25, 0x0c	; 12
+	rx_buf[0]++;
+ 716:	80 91 54 01 	lds	r24, 0x0154
+ 71a:	8f 5f       	subi	r24, 0xFF	; 255
+ 71c:	80 93 54 01 	sts	0x0154, r24
+	if (rx_buf[0] == 50) rx_buf[0] = 1;
+ 720:	82 33       	cpi	r24, 0x32	; 50
+ 722:	19 f4       	brne	.+6      	; 0x72a <__vector_11+0x28>
+ 724:	81 e0       	ldi	r24, 0x01	; 1
+ 726:	80 93 54 01 	sts	0x0154, r24
+	rx_buf[rx_buf[0]]=DATA;
+ 72a:	e0 91 54 01 	lds	r30, 0x0154
+ 72e:	f0 e0       	ldi	r31, 0x00	; 0
+ 730:	ec 5a       	subi	r30, 0xAC	; 172
+ 732:	fe 4f       	sbci	r31, 0xFE	; 254
+ 734:	90 83       	st	Z, r25
+	}
+ 736:	ff 91       	pop	r31
+ 738:	ef 91       	pop	r30
+ 73a:	9f 91       	pop	r25
+ 73c:	8f 91       	pop	r24
+ 73e:	0f 90       	pop	r0
+ 740:	0f be       	out	0x3f, r0	; 63
+ 742:	0f 90       	pop	r0
+ 744:	1f 90       	pop	r1
+ 746:	18 95       	reti
+
+00000748 <DeviceQ_FIND_ALL>:
+//============================================ Поиск всех устройств на шине =============================================
+//=======================================================================================================================
+int DeviceQ_FIND_ALL(void){
+ int rslt, i;
+ 
+  _deviceQ_find_count = 0;
+ 748:	10 92 62 00 	sts	0x0062, r1
+
+ memset(_deviceQ_all_rom,0x00, (_deviceQ_max_count*8));											//чищу массив адресов, а то предыдущий поиск дал больше датчиков и массив не затрет последние
+ 74c:	80 ea       	ldi	r24, 0xA0	; 160
+ 74e:	e3 e9       	ldi	r30, 0x93	; 147
+ 750:	f0 e0       	ldi	r31, 0x00	; 0
+ 752:	df 01       	movw	r26, r30
+ 754:	1d 92       	st	X+, r1
+ 756:	8a 95       	dec	r24
+ 758:	e9 f7       	brne	.-6      	; 0x754 <DeviceQ_FIND_ALL+0xc>
+
+ rslt = DeviceQ_First();																		// поиск хотя бы одного устройства
+ 75a:	28 df       	rcall	.-432    	; 0x5ac <DeviceQ_First>
+ 75c:	0a c0       	rjmp	.+20     	; 0x772 <DeviceQ_FIND_ALL+0x2a>
+
+ while (rslt){																					// если одно найдено - работаем дальше
+	for (i = 0; i < 8; i++)	_deviceQ_all_rom[_deviceQ_find_count][i] = _deviceQ_rom_array[i];	// перенос найденного адреса в массив с индексом ([индекс], [тип, код, crc])
+ 75e:	8d 91       	ld	r24, X+
+ 760:	81 93       	st	Z+, r24
+ 762:	80 e0       	ldi	r24, 0x00	; 0
+ 764:	a2 37       	cpi	r26, 0x72	; 114
+ 766:	b8 07       	cpc	r27, r24
+ 768:	d1 f7       	brne	.-12     	; 0x75e <DeviceQ_FIND_ALL+0x16>
+   	++_deviceQ_find_count;																		// счетчик найденных устройств
+ 76a:	2f 5f       	subi	r18, 0xFF	; 255
+ 76c:	20 93 62 00 	sts	0x0062, r18
+
+//=======================================================================================================================
+//=================================== Поиск следующего устройства на шине ===============================================
+//=======================================================================================================================
+int DeviceQ_Next(){ 
+   return DeviceQ_SEARCH_ROM_COMMAND();  							// Переход на основную функцию поиска
+ 770:	40 de       	rcall	.-896    	; 0x3f2 <DeviceQ_SEARCH_ROM_COMMAND>
+ 772:	20 91 62 00 	lds	r18, 0x0062
+
+ memset(_deviceQ_all_rom,0x00, (_deviceQ_max_count*8));											//чищу массив адресов, а то предыдущий поиск дал больше датчиков и массив не затрет последние
+
+ rslt = DeviceQ_First();																		// поиск хотя бы одного устройства
+
+ while (rslt){																					// если одно найдено - работаем дальше
+ 776:	89 2b       	or	r24, r25
+ 778:	61 f0       	breq	.+24     	; 0x792 <DeviceQ_FIND_ALL+0x4a>
+	for (i = 0; i < 8; i++)	_deviceQ_all_rom[_deviceQ_find_count][i] = _deviceQ_rom_array[i];	// перенос найденного адреса в массив с индексом ([индекс], [тип, код, crc])
+ 77a:	aa e6       	ldi	r26, 0x6A	; 106
+ 77c:	b0 e0       	ldi	r27, 0x00	; 0
+ 77e:	e2 2f       	mov	r30, r18
+ 780:	f0 e0       	ldi	r31, 0x00	; 0
+ 782:	53 e0       	ldi	r21, 0x03	; 3
+ 784:	ee 0f       	add	r30, r30
+ 786:	ff 1f       	adc	r31, r31
+ 788:	5a 95       	dec	r21
+ 78a:	e1 f7       	brne	.-8      	; 0x784 <DeviceQ_FIND_ALL+0x3c>
+ 78c:	ed 56       	subi	r30, 0x6D	; 109
+ 78e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 790:	e6 cf       	rjmp	.-52     	; 0x75e <DeviceQ_FIND_ALL+0x16>
+   	++_deviceQ_find_count;																		// счетчик найденных устройств
+   	rslt = DeviceQ_Next();																		// искать следующее
+   }
+
+ return _deviceQ_find_count;																	// возвращаю количество устройств (0 - нет, 1....)
+}	
+ 792:	82 2f       	mov	r24, r18
+ 794:	90 e0       	ldi	r25, 0x00	; 0
+ 796:	08 95       	ret
+
+00000798 <DeviceQ_read_list_array>:
+
+
+//=======================================================================================================================
+//=====================================Считывание всего ключа массива====================================================
+//=======================================================================================================================
+unsigned char DeviceQ_read_list_array(unsigned char * array, unsigned char i, bool LogicVal){
+ 798:	0f 93       	push	r16
+ 79a:	1f 93       	push	r17
+ 79c:	cf 93       	push	r28
+ 79e:	df 93       	push	r29
+ 7a0:	ec 01       	movw	r28, r24
+ 7a2:	06 2f       	mov	r16, r22
+ 7a4:	14 2f       	mov	r17, r20
+ memset(array,0x00,i);											//очищаю предыдущее значение
+ 7a6:	60 e0       	ldi	r22, 0x00	; 0
+ 7a8:	70 e0       	ldi	r23, 0x00	; 0
+ 7aa:	40 2f       	mov	r20, r16
+ 7ac:	50 e0       	ldi	r21, 0x00	; 0
+ 7ae:	9a d1       	rcall	.+820    	; 0xae4 <memset>
+
+ if (LogicVal) 
+ 7b0:	11 23       	and	r17, r17
+ 7b2:	71 f0       	breq	.+28     	; 0x7d0 <DeviceQ_read_list_array+0x38>
+ 7b4:	10 e0       	ldi	r17, 0x00	; 0
+ 7b6:	03 c0       	rjmp	.+6      	; 0x7be <DeviceQ_read_list_array+0x26>
+	for(unsigned char j=0;j!=i;j++){							//заполняю массив значениями от 0 до i
+		array[j] = DeviceQ_read_byte();
+ 7b8:	a9 dd       	rcall	.-1198   	; 0x30c <DeviceQ_read_byte>
+ 7ba:	89 93       	st	Y+, r24
+//=======================================================================================================================
+unsigned char DeviceQ_read_list_array(unsigned char * array, unsigned char i, bool LogicVal){
+ memset(array,0x00,i);											//очищаю предыдущее значение
+
+ if (LogicVal) 
+	for(unsigned char j=0;j!=i;j++){							//заполняю массив значениями от 0 до i
+ 7bc:	1f 5f       	subi	r17, 0xFF	; 255
+ 7be:	10 17       	cp	r17, r16
+ 7c0:	d9 f7       	brne	.-10     	; 0x7b8 <DeviceQ_read_list_array+0x20>
+ 7c2:	08 c0       	rjmp	.+16     	; 0x7d4 <DeviceQ_read_list_array+0x3c>
+		array[j] = DeviceQ_read_byte();
+	}		
+ else
+	while (i--){array[i] = DeviceQ_read_byte();}				//заполняю массив значениями от i до 0
+ 7c4:	01 50       	subi	r16, 0x01	; 1
+ 7c6:	a2 dd       	rcall	.-1212   	; 0x30c <DeviceQ_read_byte>
+ 7c8:	fe 01       	movw	r30, r28
+ 7ca:	e0 0f       	add	r30, r16
+ 7cc:	f1 1d       	adc	r31, r1
+ 7ce:	80 83       	st	Z, r24
+ 7d0:	00 23       	and	r16, r16
+ 7d2:	c1 f7       	brne	.-16     	; 0x7c4 <DeviceQ_read_list_array+0x2c>
+
+ //_1_WIRE_ERROR = CheckRomCRC8(array,0);						//Проверка контрольной суммы полученных 8 байтов донных
+
+ return _1_WIRE_ERROR;   
+ 7d4:	80 91 61 00 	lds	r24, 0x0061
+}
+ 7d8:	df 91       	pop	r29
+ 7da:	cf 91       	pop	r28
+ 7dc:	1f 91       	pop	r17
+ 7de:	0f 91       	pop	r16
+ 7e0:	08 95       	ret
+
+000007e2 <chek>:
+	#define F_CPU 8000000L					/* CPU frequency */
+	#include "includes.h"	
+
+void chek(void){
+ 7e2:	1f 93       	push	r17
+ 7e4:	cf 93       	push	r28
+ 7e6:	df 93       	push	r29
+	u08 fl = 0;
+	if ((rx_buf[rx_buf[0]] == 10) && (rx_buf[rx_buf[0]-1]==13)) {
+ 7e8:	80 91 54 01 	lds	r24, 0x0154
+ 7ec:	e8 2f       	mov	r30, r24
+ 7ee:	f0 e0       	ldi	r31, 0x00	; 0
+ 7f0:	ec 5a       	subi	r30, 0xAC	; 172
+ 7f2:	fe 4f       	sbci	r31, 0xFE	; 254
+ 7f4:	80 81       	ld	r24, Z
+ 7f6:	8a 30       	cpi	r24, 0x0A	; 10
+ 7f8:	09 f0       	breq	.+2      	; 0x7fc <chek+0x1a>
+ 7fa:	48 c1       	rjmp	.+656    	; 0xa8c <chek+0x2aa>
+ 7fc:	31 97       	sbiw	r30, 0x01	; 1
+ 7fe:	80 81       	ld	r24, Z
+ 800:	8d 30       	cpi	r24, 0x0D	; 13
+ 802:	09 f0       	breq	.+2      	; 0x806 <chek+0x24>
+ 804:	43 c1       	rjmp	.+646    	; 0xa8c <chek+0x2aa>
+	UCSRC = 1<<URSEL|1<<UCSZ0|1<<UCSZ1;
+	}
+
+
+void USART_Transmit(uint8_t data) {
+	while (!(UCSRA&(1<<UDRE)));	// Wait for empty transmit buffer
+ 806:	5d 9b       	sbis	0x0b, 5	; 11
+ 808:	fe cf       	rjmp	.-4      	; 0x806 <chek+0x24>
+	tx_buf[0]=0;
+ 80a:	10 92 86 01 	sts	0x0186, r1
+	UDR = data;			// Put data into buffer, send data
+ 80e:	81 e0       	ldi	r24, 0x01	; 1
+ 810:	8c b9       	out	0x0c, r24	; 12
+		
+		USART_Transmit(1);
+		USART_SendEND();
+ 812:	cb dc       	rcall	.-1642   	; 0x1aa <USART_SendEND>
+		
+		if (rx_buf[1]=='?') {
+ 814:	80 91 55 01 	lds	r24, 0x0155
+ 818:	8f 33       	cpi	r24, 0x3F	; 63
+ 81a:	11 f0       	breq	.+4      	; 0x820 <chek+0x3e>
+ 81c:	90 e0       	ldi	r25, 0x00	; 0
+ 81e:	04 c0       	rjmp	.+8      	; 0x828 <chek+0x46>
+			SendStr_P(StringP);
+ 820:	86 e2       	ldi	r24, 0x26	; 38
+ 822:	90 e0       	ldi	r25, 0x00	; 0
+ 824:	cd dc       	rcall	.-1638   	; 0x1c0 <SendStr_P>
+ 826:	91 e0       	ldi	r25, 0x01	; 1
+			fl = 1;
+		};
+//----------------------------------------------------------------------------------------------------------
+		if (rx_buf[0] == 2) {								//	<--------------------------------------RESET
+ 828:	80 91 54 01 	lds	r24, 0x0154
+ 82c:	82 30       	cpi	r24, 0x02	; 2
+ 82e:	41 f4       	brne	.+16     	; 0x840 <chek+0x5e>
+			USART_Transmit(DeviceQ_reset());
+ 830:	fe dc       	rcall	.-1540   	; 0x22e <DeviceQ_reset>
+	UCSRC = 1<<URSEL|1<<UCSZ0|1<<UCSZ1;
+	}
+
+
+void USART_Transmit(uint8_t data) {
+	while (!(UCSRA&(1<<UDRE)));	// Wait for empty transmit buffer
+ 832:	5d 9b       	sbis	0x0b, 5	; 11
+ 834:	fe cf       	rjmp	.-4      	; 0x832 <chek+0x50>
+	tx_buf[0]=0;
+ 836:	10 92 86 01 	sts	0x0186, r1
+	UDR = data;			// Put data into buffer, send data
+ 83a:	8c b9       	out	0x0c, r24	; 12
+			USART_SendEND();
+ 83c:	b6 dc       	rcall	.-1684   	; 0x1aa <USART_SendEND>
+ 83e:	91 e0       	ldi	r25, 0x01	; 1
+			fl = 1;
+		};
+
+//----------------------------------------------------------------------------------------------------------
+		if ((rx_buf[1] == SEARCH_ROM) && (rx_buf[0] == 3)) {	//	<-----------------------------SEARCH_ROM
+ 840:	80 91 55 01 	lds	r24, 0x0155
+ 844:	80 3f       	cpi	r24, 0xF0	; 240
+ 846:	89 f5       	brne	.+98     	; 0x8aa <chek+0xc8>
+ 848:	80 91 54 01 	lds	r24, 0x0154
+ 84c:	83 30       	cpi	r24, 0x03	; 3
+ 84e:	69 f5       	brne	.+90     	; 0x8aa <chek+0xc8>
+
+			USART_Transmit(DeviceQ_FIND_ALL());
+ 850:	7b df       	rcall	.-266    	; 0x748 <DeviceQ_FIND_ALL>
+	UCSRC = 1<<URSEL|1<<UCSZ0|1<<UCSZ1;
+	}
+
+
+void USART_Transmit(uint8_t data) {
+	while (!(UCSRA&(1<<UDRE)));	// Wait for empty transmit buffer
+ 852:	5d 9b       	sbis	0x0b, 5	; 11
+ 854:	fe cf       	rjmp	.-4      	; 0x852 <chek+0x70>
+	tx_buf[0]=0;
+ 856:	10 92 86 01 	sts	0x0186, r1
+	UDR = data;			// Put data into buffer, send data
+ 85a:	8c b9       	out	0x0c, r24	; 12
+			USART_SendEND();
+ 85c:	a6 dc       	rcall	.-1716   	; 0x1aa <USART_SendEND>
+			if (_deviceQ_find_count>0) {
+ 85e:	80 91 62 00 	lds	r24, 0x0062
+ 862:	88 23       	and	r24, r24
+ 864:	09 f1       	breq	.+66     	; 0x8a8 <chek+0xc6>
+ 866:	c0 e0       	ldi	r28, 0x00	; 0
+ 868:	d0 e0       	ldi	r29, 0x00	; 0
+ 86a:	0d c0       	rjmp	.+26     	; 0x886 <chek+0xa4>
+				for (int n = 0; n < _deviceQ_find_count; n++) {
+					for (int i = 0; i < 8; i++) {
+						USART_Transmit(_deviceQ_all_rom[n][i]);
+ 86c:	20 81       	ld	r18, Z
+	UCSRC = 1<<URSEL|1<<UCSZ0|1<<UCSZ1;
+	}
+
+
+void USART_Transmit(uint8_t data) {
+	while (!(UCSRA&(1<<UDRE)));	// Wait for empty transmit buffer
+ 86e:	5d 9b       	sbis	0x0b, 5	; 11
+ 870:	fe cf       	rjmp	.-4      	; 0x86e <chek+0x8c>
+	tx_buf[0]=0;
+	UDR = data;			// Put data into buffer, send data
+ 872:	2c b9       	out	0x0c, r18	; 12
+
+			USART_Transmit(DeviceQ_FIND_ALL());
+			USART_SendEND();
+			if (_deviceQ_find_count>0) {
+				for (int n = 0; n < _deviceQ_find_count; n++) {
+					for (int i = 0; i < 8; i++) {
+ 874:	01 96       	adiw	r24, 0x01	; 1
+ 876:	31 96       	adiw	r30, 0x01	; 1
+ 878:	88 30       	cpi	r24, 0x08	; 8
+ 87a:	91 05       	cpc	r25, r1
+ 87c:	b9 f7       	brne	.-18     	; 0x86c <chek+0x8a>
+ 87e:	10 92 86 01 	sts	0x0186, r1
+						USART_Transmit(_deviceQ_all_rom[n][i]);
+						};
+					USART_SendEND();
+ 882:	93 dc       	rcall	.-1754   	; 0x1aa <USART_SendEND>
+		if ((rx_buf[1] == SEARCH_ROM) && (rx_buf[0] == 3)) {	//	<-----------------------------SEARCH_ROM
+
+			USART_Transmit(DeviceQ_FIND_ALL());
+			USART_SendEND();
+			if (_deviceQ_find_count>0) {
+				for (int n = 0; n < _deviceQ_find_count; n++) {
+ 884:	21 96       	adiw	r28, 0x01	; 1
+ 886:	80 91 62 00 	lds	r24, 0x0062
+ 88a:	90 e0       	ldi	r25, 0x00	; 0
+ 88c:	c8 17       	cp	r28, r24
+ 88e:	d9 07       	cpc	r29, r25
+ 890:	5c f4       	brge	.+22     	; 0x8a8 <chek+0xc6>
+ 892:	fe 01       	movw	r30, r28
+ 894:	63 e0       	ldi	r22, 0x03	; 3
+ 896:	ee 0f       	add	r30, r30
+ 898:	ff 1f       	adc	r31, r31
+ 89a:	6a 95       	dec	r22
+ 89c:	e1 f7       	brne	.-8      	; 0x896 <chek+0xb4>
+ 89e:	ed 56       	subi	r30, 0x6D	; 109
+ 8a0:	ff 4f       	sbci	r31, 0xFF	; 255
+ 8a2:	80 e0       	ldi	r24, 0x00	; 0
+ 8a4:	90 e0       	ldi	r25, 0x00	; 0
+ 8a6:	e2 cf       	rjmp	.-60     	; 0x86c <chek+0x8a>
+ 8a8:	91 e0       	ldi	r25, 0x01	; 1
+					};
+				};
+				fl = 1;
+			};	
+//----------------------------------------------------------------------------------------------------------
+		if ((rx_buf[1] == READ_ROM) && (rx_buf[0] == 3)) {	//	<-----------------------------------READ_ROM
+ 8aa:	80 91 55 01 	lds	r24, 0x0155
+ 8ae:	83 33       	cpi	r24, 0x33	; 51
+ 8b0:	d1 f4       	brne	.+52     	; 0x8e6 <chek+0x104>
+ 8b2:	80 91 54 01 	lds	r24, 0x0154
+ 8b6:	83 30       	cpi	r24, 0x03	; 3
+ 8b8:	b1 f4       	brne	.+44     	; 0x8e6 <chek+0x104>
+			DeviceQ_write_byte(READ_ROM);
+ 8ba:	83 e3       	ldi	r24, 0x33	; 51
+ 8bc:	fe dc       	rcall	.-1540   	; 0x2ba <DeviceQ_write_byte>
+ 			DeviceQ_read_list_array(_deviceQ_rom_array,8,1);
+ 8be:	8a e6       	ldi	r24, 0x6A	; 106
+ 8c0:	90 e0       	ldi	r25, 0x00	; 0
+ 8c2:	68 e0       	ldi	r22, 0x08	; 8
+ 8c4:	41 e0       	ldi	r20, 0x01	; 1
+ 8c6:	68 df       	rcall	.-304    	; 0x798 <DeviceQ_read_list_array>
+ 8c8:	ea e6       	ldi	r30, 0x6A	; 106
+ 8ca:	f0 e0       	ldi	r31, 0x00	; 0
+			for (int i = 0; i < 8; i++) USART_Transmit(_deviceQ_rom_array[i]);
+ 8cc:	80 81       	ld	r24, Z
+	UCSRC = 1<<URSEL|1<<UCSZ0|1<<UCSZ1;
+	}
+
+
+void USART_Transmit(uint8_t data) {
+	while (!(UCSRA&(1<<UDRE)));	// Wait for empty transmit buffer
+ 8ce:	5d 9b       	sbis	0x0b, 5	; 11
+ 8d0:	fe cf       	rjmp	.-4      	; 0x8ce <chek+0xec>
+	tx_buf[0]=0;
+	UDR = data;			// Put data into buffer, send data
+ 8d2:	8c b9       	out	0x0c, r24	; 12
+ 8d4:	31 96       	adiw	r30, 0x01	; 1
+ 8d6:	80 e0       	ldi	r24, 0x00	; 0
+ 8d8:	e2 37       	cpi	r30, 0x72	; 114
+ 8da:	f8 07       	cpc	r31, r24
+ 8dc:	b9 f7       	brne	.-18     	; 0x8cc <chek+0xea>
+ 8de:	10 92 86 01 	sts	0x0186, r1
+			USART_SendEND();
+ 8e2:	63 dc       	rcall	.-1850   	; 0x1aa <USART_SendEND>
+ 8e4:	91 e0       	ldi	r25, 0x01	; 1
+			fl = 1;
+			};
+//----------------------------------------------------------------------------------------------------------
+		if ((rx_buf[1] == 0x34) && (rx_buf[0] == 11)) {		//	<----------------------------------WRITE_ROM
+ 8e6:	80 91 55 01 	lds	r24, 0x0155
+ 8ea:	84 33       	cpi	r24, 0x34	; 52
+ 8ec:	69 f4       	brne	.+26     	; 0x908 <chek+0x126>
+ 8ee:	80 91 54 01 	lds	r24, 0x0154
+ 8f2:	8b 30       	cpi	r24, 0x0B	; 11
+ 8f4:	49 f4       	brne	.+18     	; 0x908 <chek+0x126>
+ 8f6:	c5 e5       	ldi	r28, 0x55	; 85
+ 8f8:	d1 e0       	ldi	r29, 0x01	; 1
+			for (int i = 0; i < 9; i++)	DeviceQ_write_byte(rx_buf[1+i]);
+ 8fa:	89 91       	ld	r24, Y+
+ 8fc:	de dc       	rcall	.-1604   	; 0x2ba <DeviceQ_write_byte>
+ 8fe:	81 e0       	ldi	r24, 0x01	; 1
+ 900:	ce 35       	cpi	r28, 0x5E	; 94
+ 902:	d8 07       	cpc	r29, r24
+ 904:	d1 f7       	brne	.-12     	; 0x8fa <chek+0x118>
+ 906:	91 e0       	ldi	r25, 0x01	; 1
+			fl = 1;
+			};
+//----------------------------------------------------------------------------------------------------------		
+		if ((rx_buf[1] == MATCH_ROM) && (rx_buf[0] == 11)) {//	<----------------------------------MATCH_ROM
+ 908:	80 91 55 01 	lds	r24, 0x0155
+ 90c:	85 35       	cpi	r24, 0x55	; 85
+ 90e:	c9 f4       	brne	.+50     	; 0x942 <chek+0x160>
+ 910:	80 91 54 01 	lds	r24, 0x0154
+ 914:	8b 30       	cpi	r24, 0x0B	; 11
+ 916:	a9 f4       	brne	.+42     	; 0x942 <chek+0x160>
+ 918:	e6 e5       	ldi	r30, 0x56	; 86
+ 91a:	f1 e0       	ldi	r31, 0x01	; 1
+ 91c:	aa e6       	ldi	r26, 0x6A	; 106
+ 91e:	b0 e0       	ldi	r27, 0x00	; 0
+			for (int i = 0; i < 9; i++)	_deviceQ_rom_array[i]=rx_buf[2+i];
+ 920:	81 91       	ld	r24, Z+
+ 922:	8d 93       	st	X+, r24
+ 924:	81 e0       	ldi	r24, 0x01	; 1
+ 926:	ef 35       	cpi	r30, 0x5F	; 95
+ 928:	f8 07       	cpc	r31, r24
+ 92a:	d1 f7       	brne	.-12     	; 0x920 <chek+0x13e>
+			DeviceQ_MATCH_ROM_COMMAND(_deviceQ_rom_array); 
+ 92c:	8a e6       	ldi	r24, 0x6A	; 106
+ 92e:	90 e0       	ldi	r25, 0x00	; 0
+ 930:	06 dd       	rcall	.-1524   	; 0x33e <DeviceQ_MATCH_ROM_COMMAND>
+	UCSRC = 1<<URSEL|1<<UCSZ0|1<<UCSZ1;
+	}
+
+
+void USART_Transmit(uint8_t data) {
+	while (!(UCSRA&(1<<UDRE)));	// Wait for empty transmit buffer
+ 932:	5d 9b       	sbis	0x0b, 5	; 11
+ 934:	fe cf       	rjmp	.-4      	; 0x932 <chek+0x150>
+	tx_buf[0]=0;
+ 936:	10 92 86 01 	sts	0x0186, r1
+	UDR = data;			// Put data into buffer, send data
+ 93a:	81 e3       	ldi	r24, 0x31	; 49
+ 93c:	8c b9       	out	0x0c, r24	; 12
+			USART_Transmit('1');
+			USART_SendEND();
+ 93e:	35 dc       	rcall	.-1942   	; 0x1aa <USART_SendEND>
+ 940:	91 e0       	ldi	r25, 0x01	; 1
+			fl = 1;
+			};
+//----------------------------------------------------------------------------------------------------------		
+		if ((rx_buf[1] == 0xB4) && (rx_buf[0] == 3)) {		//	<-------------------------------Power_Status
+ 942:	80 91 55 01 	lds	r24, 0x0155
+ 946:	84 3b       	cpi	r24, 0xB4	; 180
+ 948:	71 f4       	brne	.+28     	; 0x966 <chek+0x184>
+ 94a:	80 91 54 01 	lds	r24, 0x0154
+ 94e:	83 30       	cpi	r24, 0x03	; 3
+ 950:	51 f4       	brne	.+20     	; 0x966 <chek+0x184>
+			unsigned char ow_power_state;
+			//DeviceQ_reset();
+			DeviceQ_write_byte(0xB4);
+ 952:	84 eb       	ldi	r24, 0xB4	; 180
+ 954:	b2 dc       	rcall	.-1692   	; 0x2ba <DeviceQ_write_byte>
+			ow_power_state = DeviceQ_read_bit();
+ 956:	c3 dc       	rcall	.-1658   	; 0x2de <DeviceQ_read_bit>
+	UCSRC = 1<<URSEL|1<<UCSZ0|1<<UCSZ1;
+	}
+
+
+void USART_Transmit(uint8_t data) {
+	while (!(UCSRA&(1<<UDRE)));	// Wait for empty transmit buffer
+ 958:	5d 9b       	sbis	0x0b, 5	; 11
+ 95a:	fe cf       	rjmp	.-4      	; 0x958 <chek+0x176>
+	tx_buf[0]=0;
+ 95c:	10 92 86 01 	sts	0x0186, r1
+	UDR = data;			// Put data into buffer, send data
+ 960:	8c b9       	out	0x0c, r24	; 12
+			USART_Transmit(ow_power_state);
+			USART_SendEND();
+ 962:	23 dc       	rcall	.-1978   	; 0x1aa <USART_SendEND>
+ 964:	91 e0       	ldi	r25, 0x01	; 1
+			fl = 1;
+			};	
+//----------------------------------------------------------------------------------------------------------				
+		if ((rx_buf[1] == READ_SCRATCHPAD) && (rx_buf[0] == 3)) {	//	<--------------------READ_SCRATCHPAD
+ 966:	80 91 55 01 	lds	r24, 0x0155
+ 96a:	8e 3b       	cpi	r24, 0xBE	; 190
+ 96c:	d1 f4       	brne	.+52     	; 0x9a2 <chek+0x1c0>
+ 96e:	80 91 54 01 	lds	r24, 0x0154
+ 972:	83 30       	cpi	r24, 0x03	; 3
+ 974:	b1 f4       	brne	.+44     	; 0x9a2 <chek+0x1c0>
+			DeviceQ_write_byte(0xBE);
+ 976:	8e eb       	ldi	r24, 0xBE	; 190
+ 978:	a0 dc       	rcall	.-1728   	; 0x2ba <DeviceQ_write_byte>
+			DeviceQ_read_list_array(_deviceQ_ScratchPad, 9,1);					// прочитать ответ устройства на команду READ_SCRATCHPAD и записать в массив DeviceQ_ScratchPad[9]
+ 97a:	83 e3       	ldi	r24, 0x33	; 51
+ 97c:	91 e0       	ldi	r25, 0x01	; 1
+ 97e:	69 e0       	ldi	r22, 0x09	; 9
+ 980:	41 e0       	ldi	r20, 0x01	; 1
+ 982:	0a df       	rcall	.-492    	; 0x798 <DeviceQ_read_list_array>
+ 984:	e3 e3       	ldi	r30, 0x33	; 51
+ 986:	f1 e0       	ldi	r31, 0x01	; 1
+			for (int i = 0; i < 9; i++) {
+				USART_Transmit(_deviceQ_ScratchPad[i]);			
+ 988:	80 81       	ld	r24, Z
+	UCSRC = 1<<URSEL|1<<UCSZ0|1<<UCSZ1;
+	}
+
+
+void USART_Transmit(uint8_t data) {
+	while (!(UCSRA&(1<<UDRE)));	// Wait for empty transmit buffer
+ 98a:	5d 9b       	sbis	0x0b, 5	; 11
+ 98c:	fe cf       	rjmp	.-4      	; 0x98a <chek+0x1a8>
+	tx_buf[0]=0;
+	UDR = data;			// Put data into buffer, send data
+ 98e:	8c b9       	out	0x0c, r24	; 12
+ 990:	31 96       	adiw	r30, 0x01	; 1
+			};	
+//----------------------------------------------------------------------------------------------------------				
+		if ((rx_buf[1] == READ_SCRATCHPAD) && (rx_buf[0] == 3)) {	//	<--------------------READ_SCRATCHPAD
+			DeviceQ_write_byte(0xBE);
+			DeviceQ_read_list_array(_deviceQ_ScratchPad, 9,1);					// прочитать ответ устройства на команду READ_SCRATCHPAD и записать в массив DeviceQ_ScratchPad[9]
+			for (int i = 0; i < 9; i++) {
+ 992:	81 e0       	ldi	r24, 0x01	; 1
+ 994:	ec 33       	cpi	r30, 0x3C	; 60
+ 996:	f8 07       	cpc	r31, r24
+ 998:	b9 f7       	brne	.-18     	; 0x988 <chek+0x1a6>
+ 99a:	10 92 86 01 	sts	0x0186, r1
+				USART_Transmit(_deviceQ_ScratchPad[i]);			
+				};
+			USART_SendEND();
+ 99e:	05 dc       	rcall	.-2038   	; 0x1aa <USART_SendEND>
+ 9a0:	91 e0       	ldi	r25, 0x01	; 1
+			fl = 1;
+
+			};
+//----------------------------------------------------------------------------------------------------------				
+		if ((rx_buf[1] == READ_MEMORY) && (rx_buf[0] == 5)) {	//	<--------------------READ_MEMORY
+ 9a2:	80 91 55 01 	lds	r24, 0x0155
+ 9a6:	80 3f       	cpi	r24, 0xF0	; 240
+ 9a8:	31 f5       	brne	.+76     	; 0x9f6 <chek+0x214>
+ 9aa:	80 91 54 01 	lds	r24, 0x0154
+ 9ae:	85 30       	cpi	r24, 0x05	; 5
+ 9b0:	11 f5       	brne	.+68     	; 0x9f6 <chek+0x214>
+			DeviceQ_write_byte(READ_MEMORY);
+ 9b2:	80 ef       	ldi	r24, 0xF0	; 240
+ 9b4:	82 dc       	rcall	.-1788   	; 0x2ba <DeviceQ_write_byte>
+			DeviceQ_write_byte(rx_buf[2]);						//Стартовый адрес
+ 9b6:	80 91 56 01 	lds	r24, 0x0156
+ 9ba:	7f dc       	rcall	.-1794   	; 0x2ba <DeviceQ_write_byte>
+			uint8_t	n = rx_buf[3];								//Количество байт
+ 9bc:	10 91 57 01 	lds	r17, 0x0157
+			DeviceQ_read_list_array(data_buf,n,1);					// прочитать ответ устройства на команду READ_SCRATCHPAD и записать в массив DeviceQ_ScratchPad[9]
+ 9c0:	82 e7       	ldi	r24, 0x72	; 114
+ 9c2:	90 e0       	ldi	r25, 0x00	; 0
+ 9c4:	61 2f       	mov	r22, r17
+ 9c6:	41 e0       	ldi	r20, 0x01	; 1
+ 9c8:	e7 de       	rcall	.-562    	; 0x798 <DeviceQ_read_list_array>
+ 9ca:	20 91 86 01 	lds	r18, 0x0186
+ 9ce:	e2 e7       	ldi	r30, 0x72	; 114
+ 9d0:	f0 e0       	ldi	r31, 0x00	; 0
+			for (int i = 0; i < n; i++) {
+ 9d2:	81 2f       	mov	r24, r17
+ 9d4:	90 e0       	ldi	r25, 0x00	; 0
+ 9d6:	8e 0f       	add	r24, r30
+ 9d8:	9f 1f       	adc	r25, r31
+ 9da:	06 c0       	rjmp	.+12     	; 0x9e8 <chek+0x206>
+				USART_Transmit(data_buf[i]);
+ 9dc:	20 81       	ld	r18, Z
+	UCSRC = 1<<URSEL|1<<UCSZ0|1<<UCSZ1;
+	}
+
+
+void USART_Transmit(uint8_t data) {
+	while (!(UCSRA&(1<<UDRE)));	// Wait for empty transmit buffer
+ 9de:	5d 9b       	sbis	0x0b, 5	; 11
+ 9e0:	fe cf       	rjmp	.-4      	; 0x9de <chek+0x1fc>
+	tx_buf[0]=0;
+	UDR = data;			// Put data into buffer, send data
+ 9e2:	2c b9       	out	0x0c, r18	; 12
+ 9e4:	31 96       	adiw	r30, 0x01	; 1
+ 9e6:	20 e0       	ldi	r18, 0x00	; 0
+		if ((rx_buf[1] == READ_MEMORY) && (rx_buf[0] == 5)) {	//	<--------------------READ_MEMORY
+			DeviceQ_write_byte(READ_MEMORY);
+			DeviceQ_write_byte(rx_buf[2]);						//Стартовый адрес
+			uint8_t	n = rx_buf[3];								//Количество байт
+			DeviceQ_read_list_array(data_buf,n,1);					// прочитать ответ устройства на команду READ_SCRATCHPAD и записать в массив DeviceQ_ScratchPad[9]
+			for (int i = 0; i < n; i++) {
+ 9e8:	e8 17       	cp	r30, r24
+ 9ea:	f9 07       	cpc	r31, r25
+ 9ec:	b9 f7       	brne	.-18     	; 0x9dc <chek+0x1fa>
+ 9ee:	20 93 86 01 	sts	0x0186, r18
+				USART_Transmit(data_buf[i]);
+				};
+			USART_SendEND();
+ 9f2:	db db       	rcall	.-2122   	; 0x1aa <USART_SendEND>
+ 9f4:	91 e0       	ldi	r25, 0x01	; 1
+			fl = 1;
+			};
+//----------------------------------------------------------------------------------------------------------				
+		if ((rx_buf[1] == 0xAA) && (rx_buf[0] == 5)) {	//	<--------------------Flash
+ 9f6:	80 91 55 01 	lds	r24, 0x0155
+ 9fa:	8a 3a       	cpi	r24, 0xAA	; 170
+ 9fc:	31 f5       	brne	.+76     	; 0xa4a <chek+0x268>
+ 9fe:	80 91 54 01 	lds	r24, 0x0154
+ a02:	85 30       	cpi	r24, 0x05	; 5
+ a04:	11 f5       	brne	.+68     	; 0xa4a <chek+0x268>
+			DeviceQ_write_byte(0xAA);
+ a06:	8a ea       	ldi	r24, 0xAA	; 170
+ a08:	58 dc       	rcall	.-1872   	; 0x2ba <DeviceQ_write_byte>
+			DeviceQ_write_byte(rx_buf[2]);						//Стартовый адрес
+ a0a:	80 91 56 01 	lds	r24, 0x0156
+ a0e:	55 dc       	rcall	.-1878   	; 0x2ba <DeviceQ_write_byte>
+			uint8_t	n = rx_buf[3];								//Количество байт
+ a10:	10 91 57 01 	lds	r17, 0x0157
+
+			DeviceQ_read_list_array(data_buf,n,1);					// прочитать ответ устройства на команду READ_SCRATCHPAD и записать в массив DeviceQ_ScratchPad[9]
+ a14:	82 e7       	ldi	r24, 0x72	; 114
+ a16:	90 e0       	ldi	r25, 0x00	; 0
+ a18:	61 2f       	mov	r22, r17
+ a1a:	41 e0       	ldi	r20, 0x01	; 1
+ a1c:	bd de       	rcall	.-646    	; 0x798 <DeviceQ_read_list_array>
+ a1e:	20 91 86 01 	lds	r18, 0x0186
+ a22:	e2 e7       	ldi	r30, 0x72	; 114
+ a24:	f0 e0       	ldi	r31, 0x00	; 0
+			for (int i = 0; i < n; i++) {
+ a26:	81 2f       	mov	r24, r17
+ a28:	90 e0       	ldi	r25, 0x00	; 0
+ a2a:	8e 0f       	add	r24, r30
+ a2c:	9f 1f       	adc	r25, r31
+ a2e:	06 c0       	rjmp	.+12     	; 0xa3c <chek+0x25a>
+				USART_Transmit(data_buf[i]);
+ a30:	20 81       	ld	r18, Z
+	UCSRC = 1<<URSEL|1<<UCSZ0|1<<UCSZ1;
+	}
+
+
+void USART_Transmit(uint8_t data) {
+	while (!(UCSRA&(1<<UDRE)));	// Wait for empty transmit buffer
+ a32:	5d 9b       	sbis	0x0b, 5	; 11
+ a34:	fe cf       	rjmp	.-4      	; 0xa32 <chek+0x250>
+	tx_buf[0]=0;
+	UDR = data;			// Put data into buffer, send data
+ a36:	2c b9       	out	0x0c, r18	; 12
+ a38:	31 96       	adiw	r30, 0x01	; 1
+ a3a:	20 e0       	ldi	r18, 0x00	; 0
+			DeviceQ_write_byte(0xAA);
+			DeviceQ_write_byte(rx_buf[2]);						//Стартовый адрес
+			uint8_t	n = rx_buf[3];								//Количество байт
+
+			DeviceQ_read_list_array(data_buf,n,1);					// прочитать ответ устройства на команду READ_SCRATCHPAD и записать в массив DeviceQ_ScratchPad[9]
+			for (int i = 0; i < n; i++) {
+ a3c:	e8 17       	cp	r30, r24
+ a3e:	f9 07       	cpc	r31, r25
+ a40:	b9 f7       	brne	.-18     	; 0xa30 <chek+0x24e>
+ a42:	20 93 86 01 	sts	0x0186, r18
+				USART_Transmit(data_buf[i]);
+				
+				};
+
+			USART_SendEND();
+ a46:	b1 db       	rcall	.-2206   	; 0x1aa <USART_SendEND>
+ a48:	91 e0       	ldi	r25, 0x01	; 1
+			fl = 1;
+
+			};
+//----------------------------------------------------------------------------------------------------------
+
+		if ((rx_buf[1] == WRITE_SCRATCHPAD) && (rx_buf[0] == 6)){	//	<-----------WRITE_SCRATCHPAD
+ a4a:	80 91 55 01 	lds	r24, 0x0155
+ a4e:	8e 34       	cpi	r24, 0x4E	; 78
+ a50:	79 f4       	brne	.+30     	; 0xa70 <chek+0x28e>
+ a52:	80 91 54 01 	lds	r24, 0x0154
+ a56:	86 30       	cpi	r24, 0x06	; 6
+ a58:	59 f4       	brne	.+22     	; 0xa70 <chek+0x28e>
+ 			DeviceQ_write_byte(WRITE_SCRATCHPAD); 
+ a5a:	8e e4       	ldi	r24, 0x4E	; 78
+ a5c:	2e dc       	rcall	.-1956   	; 0x2ba <DeviceQ_write_byte>
+			for (int i = 0; i < 3; i++)	{
+				DeviceQ_write_byte(rx_buf[2+i]);
+ a5e:	80 91 56 01 	lds	r24, 0x0156
+ a62:	2b dc       	rcall	.-1962   	; 0x2ba <DeviceQ_write_byte>
+ a64:	80 91 57 01 	lds	r24, 0x0157
+ a68:	28 dc       	rcall	.-1968   	; 0x2ba <DeviceQ_write_byte>
+ a6a:	80 91 58 01 	lds	r24, 0x0158
+ a6e:	08 c0       	rjmp	.+16     	; 0xa80 <chek+0x29e>
+			fl = 1;
+		};
+
+
+		
+		if ((!fl) & (rx_buf[0] == 3)) {
+ a70:	99 23       	and	r25, r25
+ a72:	39 f4       	brne	.+14     	; 0xa82 <chek+0x2a0>
+ a74:	80 91 54 01 	lds	r24, 0x0154
+ a78:	83 30       	cpi	r24, 0x03	; 3
+ a7a:	19 f4       	brne	.+6      	; 0xa82 <chek+0x2a0>
+			DeviceQ_write_byte(rx_buf[1]); 	// посылаю команду 
+ a7c:	80 91 55 01 	lds	r24, 0x0155
+ a80:	1c dc       	rcall	.-1992   	; 0x2ba <DeviceQ_write_byte>
+			};
+
+
+
+
+		user_flag = 0;
+ a82:	10 92 60 00 	sts	0x0060, r1
+		rx_buf[0]=0;	
+ a86:	10 92 54 01 	sts	0x0154, r1
+		//DeviceQ_reset();
+		sei();			
+ a8a:	78 94       	sei
+		};
+//					
+//DeviceQ_reset();	
+	};
+ a8c:	df 91       	pop	r29
+ a8e:	cf 91       	pop	r28
+ a90:	1f 91       	pop	r17
+ a92:	08 95       	ret
+
+00000a94 <main>:
+int main(void){
+	//eeprom_write_byte(1,2);
+	MainInit();
+ a94:	e3 dd       	rcall	.-1082   	; 0x65c <MainInit>
+
+	while (1){
+
+		//			sei();
+		chek();
+ a96:	a5 de       	rcall	.-694    	; 0x7e2 <chek>
+ a98:	fe cf       	rjmp	.-4      	; 0xa96 <main+0x2>
+
+00000a9a <DeviceQ_READ_SCARTCHPAD_COMMAND>:
+
+
+//=======================================================================================================================
+//====================================== Процедура READ SCARTCHPAD ======================================================
+//=======================================================================================================================
+void DeviceQ_READ_SCARTCHPAD_COMMAND(unsigned char * _ScratchPad){
+ a9a:	cf 93       	push	r28
+ a9c:	df 93       	push	r29
+ a9e:	ec 01       	movw	r28, r24
+ if (_1_WIRE_ERROR == 0x01){
+ aa0:	80 91 61 00 	lds	r24, 0x0061
+ aa4:	81 30       	cpi	r24, 0x01	; 1
+ aa6:	49 f4       	brne	.+18     	; 0xaba <DeviceQ_READ_SCARTCHPAD_COMMAND+0x20>
+		//memset(_ScratchPad,0x00,32);
+		DeviceQ_write_byte(READ_SCRATCHPAD); 						// посылаю команду 
+ aa8:	8e eb       	ldi	r24, 0xBE	; 190
+ aaa:	07 dc       	rcall	.-2034   	; 0x2ba <DeviceQ_write_byte>
+		DeviceQ_write_byte(0x00); 						// посылаю команду 
+ aac:	80 e0       	ldi	r24, 0x00	; 0
+ aae:	05 dc       	rcall	.-2038   	; 0x2ba <DeviceQ_write_byte>
+  	DeviceQ_read_list_array(_ScratchPad, 32,1);					// прочитать ответ устройства на команду READ_SCRATCHPAD и записать в массив DeviceQ_ScratchPad[9]
+ ab0:	ce 01       	movw	r24, r28
+ ab2:	60 e2       	ldi	r22, 0x20	; 32
+ ab4:	41 e0       	ldi	r20, 0x01	; 1
+ ab6:	70 de       	rcall	.-800    	; 0x798 <DeviceQ_read_list_array>
+		sei();
+ ab8:	78 94       	sei
+ }
+}
+ aba:	df 91       	pop	r29
+ abc:	cf 91       	pop	r28
+ abe:	08 95       	ret
+
+00000ac0 <DeviceQ_READ_ROM_COMMAND>:
+
+
+//=======================================================================================================================
+//================================Чтение адреса единственного устройства на шине=========================================
+//=======================================================================================================================
+void DeviceQ_READ_ROM_COMMAND(void){
+ ac0:	0f 93       	push	r16
+ ac2:	1f 93       	push	r17
+	memset(_deviceQ_rom_array,0x00,8);
+ ac4:	0a e6       	ldi	r16, 0x6A	; 106
+ ac6:	10 e0       	ldi	r17, 0x00	; 0
+ ac8:	88 e0       	ldi	r24, 0x08	; 8
+ aca:	f8 01       	movw	r30, r16
+ acc:	11 92       	st	Z+, r1
+ ace:	8a 95       	dec	r24
+ ad0:	e9 f7       	brne	.-6      	; 0xacc <DeviceQ_READ_ROM_COMMAND+0xc>
+ 	DeviceQ_write_byte(READ_ROM);
+ ad2:	83 e3       	ldi	r24, 0x33	; 51
+ ad4:	f2 db       	rcall	.-2076   	; 0x2ba <DeviceQ_write_byte>
+ 	DeviceQ_read_list_array(_deviceQ_rom_array,8,0);
+ ad6:	c8 01       	movw	r24, r16
+ ad8:	68 e0       	ldi	r22, 0x08	; 8
+ ada:	40 e0       	ldi	r20, 0x00	; 0
+ adc:	5d de       	rcall	.-838    	; 0x798 <DeviceQ_read_list_array>
+}
+ ade:	1f 91       	pop	r17
+ ae0:	0f 91       	pop	r16
+ ae2:	08 95       	ret
+
+00000ae4 <memset>:
+ ae4:	dc 01       	movw	r26, r24
+ ae6:	01 c0       	rjmp	.+2      	; 0xaea <memset+0x6>
+ ae8:	6d 93       	st	X+, r22
+ aea:	41 50       	subi	r20, 0x01	; 1
+ aec:	50 40       	sbci	r21, 0x00	; 0
+ aee:	e0 f7       	brcc	.-8      	; 0xae8 <memset+0x4>
+ af0:	08 95       	ret
+
+00000af2 <_exit>:
+ af2:	f8 94       	cli
+
+00000af4 <__stop_program>:
+ af4:	ff cf       	rjmp	.-2      	; 0xaf4 <__stop_program>

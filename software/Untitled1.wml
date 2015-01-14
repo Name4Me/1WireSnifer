@@ -1,0 +1,90 @@
+//-------------
+{function GetValue(typ, name, PktStr: string; var PosInPkt: integer; size:word; Memo: TJvRichEdit): string;
+var
+  value: string;
+  d:integer;
+  pch: WideString;
+begin
+  hexvalue:='';
+  Memo.SelStart:=(PosInPkt-12)*3;
+  d:=0;
+  case typ[1] of
+    'd': begin
+      value:=IntToStr(PInteger(@PktStr[PosInPkt])^);
+      hexvalue:=' (0x'+inttohex(Strtoint(value),8)+')';
+      Memo.SelLength:=11;
+      Memo.SelAttributes.BackColor:=$aadfdf;
+      SelAttributes:=$aadfdf;
+      Inc(PosInPkt,4);
+    end;  //integer (размер 4 байта)           d, h-hex
+    'c': begin
+      value:=IntToStr(PByte(@PktStr[PosInPkt])^);
+      hexvalue:=' (0x'+inttohex(Strtoint(value),2)+')';
+      SelLength:=2;
+      SelAttributes:=$aaaadf;
+      Memo.SelLength:=2;
+      Memo.SelAttributes.BackColor:=$aaaadf;
+      Inc(PosInPkt);
+    end;  //byte / char (размер 1 байт)        b
+    'f': begin
+      value:=FloatToStr(PDouble(@PktStr[PosInPkt])^);
+      //hexvalue:=value+' (0x'+inttohex(Strtoint(value),8)+')';
+      SelLength:=23;
+      SelAttributes:=$dfaaaa;
+      Memo.SelLength:=23;
+      Memo.SelAttributes.BackColor:=$dfaaaa;
+      Inc(PosInPkt,8);
+    end;  //double (размер 8 байт, float)      f
+    'h': begin
+      value:=IntToStr(PWord(@PktStr[PosInPkt])^);
+      hexvalue:=' (0x'+inttohex(Strtoint(value),4)+')';
+      SelLength:=5;
+      SelAttributes:=$dfaadf;
+      Memo.SelLength:=5;
+      Memo.SelAttributes.BackColor:=$dfaadf;
+      Inc(PosInPkt,2);
+    end;  //word (размер 2 байта)              w
+    'q': begin
+      value:=IntToStr(PInt64(@PktStr[PosInPkt])^);
+      SelLength:=23;
+      SelAttributes:=$aadfd0;
+      Memo.SelLength:=23;
+      Memo.SelAttributes.BackColor:=$aadfd0;
+      Inc(PosInPkt,8);
+    end;  //int64 (размер 8 байта)
+    '-','z': begin
+      if Length(name)>4 then begin
+        if name[1]<>'S' then begin
+          d:=strtoint(copy(name,1,4)); Inc(PosInPkt,d);
+          value:='Пропускаем '+inttostr(d)+' байт(а)';
+        end else
+          value:='Пропускаем скрипт';
+      end else begin
+        d:=strtoint(name); Inc(PosInPkt,d);
+        value:='Пропускаем '+inttostr(d)+' байт(а)';
+      end;
+      d:=(d+2)*3-1;
+      SelAttributes:=$dadada;
+      Memo.SelLength:=d;
+      Memo.SelAttributes.BackColor:=$dadada;
+    end;
+    's':begin
+      d:=PosEx(#0#0,PktStr,PosInPkt)-PosInPkt;
+      if (d mod 2)=1 then Inc(d);
+      SetLength(pch,d div 2);
+      if d>=2 then Move(PktStr[PosInPkt],pch[1],d) else d:=0;
+      //value:=WideStringToString(pch,1251);
+      value:=pch; //преобразует автоматом
+      SelLength:=(d+2)*3-1;
+      SelAttributes:=$dfdfaa;
+      Memo.SelLength:=(d+2)*3-1;
+      Memo.SelAttributes.BackColor:=$dfdfaa;
+      Inc(PosInPkt,d+2);
+    end;
+    else value:= 'Неизвестный идентификатор -> ?(name)!';
+  end;
+  Result:=value;
+  //проверяем на выход за границу пакета
+  //if PosInPkt>Size+10 then raise ERangeError.CreateFmt(result+' is not within the valid range of %d', [Size]);
+  if PosInPkt>Size+10 then result:='range error';
+end;}

@@ -1,0 +1,1094 @@
+
+Clon.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000516  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .bss          00000034  00800060  00800060  000005aa  2**0
+                  ALLOC
+  2 .eeprom       00000031  00810000  00810000  000005aa  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  3 .debug_aranges 00000020  00000000  00000000  000005db  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_pubnames 00000318  00000000  00000000  000005fb  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   000007bf  00000000  00000000  00000913  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000001eb  00000000  00000000  000010d2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000006ed  00000000  00000000  000012bd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000001c0  00000000  00000000  000019ac  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000035d  00000000  00000000  00001b6c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000002ec  00000000  00000000  00001ec9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	b3 c1       	rjmp	.+870    	; 0x36a <__vector_1>
+   4:	20 c0       	rjmp	.+64     	; 0x46 <__bad_interrupt>
+   6:	1f c0       	rjmp	.+62     	; 0x46 <__bad_interrupt>
+   8:	1e c0       	rjmp	.+60     	; 0x46 <__bad_interrupt>
+   a:	1d c0       	rjmp	.+58     	; 0x46 <__bad_interrupt>
+   c:	1c c0       	rjmp	.+56     	; 0x46 <__bad_interrupt>
+   e:	1b c0       	rjmp	.+54     	; 0x46 <__bad_interrupt>
+  10:	1a c0       	rjmp	.+52     	; 0x46 <__bad_interrupt>
+  12:	9c c1       	rjmp	.+824    	; 0x34c <__vector_9>
+  14:	18 c0       	rjmp	.+48     	; 0x46 <__bad_interrupt>
+  16:	17 c0       	rjmp	.+46     	; 0x46 <__bad_interrupt>
+  18:	16 c0       	rjmp	.+44     	; 0x46 <__bad_interrupt>
+  1a:	15 c0       	rjmp	.+42     	; 0x46 <__bad_interrupt>
+  1c:	14 c0       	rjmp	.+40     	; 0x46 <__bad_interrupt>
+  1e:	13 c0       	rjmp	.+38     	; 0x46 <__bad_interrupt>
+  20:	12 c0       	rjmp	.+36     	; 0x46 <__bad_interrupt>
+  22:	11 c0       	rjmp	.+34     	; 0x46 <__bad_interrupt>
+  24:	10 c0       	rjmp	.+32     	; 0x46 <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+
+00000032 <__do_clear_bss>:
+  32:	10 e0       	ldi	r17, 0x00	; 0
+  34:	a0 e6       	ldi	r26, 0x60	; 96
+  36:	b0 e0       	ldi	r27, 0x00	; 0
+  38:	01 c0       	rjmp	.+2      	; 0x3c <.do_clear_bss_start>
+
+0000003a <.do_clear_bss_loop>:
+  3a:	1d 92       	st	X+, r1
+
+0000003c <.do_clear_bss_start>:
+  3c:	a4 39       	cpi	r26, 0x94	; 148
+  3e:	b1 07       	cpc	r27, r17
+  40:	e1 f7       	brne	.-8      	; 0x3a <.do_clear_bss_loop>
+  42:	1f d2       	rcall	.+1086   	; 0x482 <main>
+  44:	66 c2       	rjmp	.+1228   	; 0x512 <_exit>
+
+00000046 <__bad_interrupt>:
+  46:	dc cf       	rjmp	.-72     	; 0x0 <__vectors>
+
+00000048 <Ping>:
+
+
+void Ping(bool A){
+  #define Ping_DDR		DDRD,		3			//Бит для записи
+  #define Ping_PORT		PORTD,	3			//Бит порта
+	if (A) {
+  48:	88 23       	and	r24, r24
+  4a:	69 f0       	breq	.+26     	; 0x66 <Ping+0x1e>
+ 		ClrBit(Ping_PORT);	
+  4c:	92 b3       	in	r25, 0x12	; 18
+  4e:	82 b3       	in	r24, 0x12	; 18
+  50:	88 70       	andi	r24, 0x08	; 8
+  52:	89 27       	eor	r24, r25
+  54:	82 bb       	out	0x12, r24	; 18
+		NOP;
+  56:	00 00       	nop
+	 	ClrBit(Ping_DDR);	
+  58:	91 b3       	in	r25, 0x11	; 17
+  5a:	81 b3       	in	r24, 0x11	; 17
+  5c:	88 70       	andi	r24, 0x08	; 8
+  5e:	89 27       	eor	r24, r25
+  60:	81 bb       	out	0x11, r24	; 17
+		NOP;
+  62:	00 00       	nop
+  64:	08 95       	ret
+		}				// для зарядки аккумулятора устройства на порту}
+ 	else	{
+		ClrBit(Ping_PORT);	
+  66:	92 b3       	in	r25, 0x12	; 18
+  68:	82 b3       	in	r24, 0x12	; 18
+  6a:	88 70       	andi	r24, 0x08	; 8
+  6c:	89 27       	eor	r24, r25
+  6e:	82 bb       	out	0x12, r24	; 18
+		NOP;
+  70:	00 00       	nop
+		SetBit(Ping_DDR);	
+  72:	8b 9a       	sbi	0x11, 3	; 17
+		NOP;
+  74:	00 00       	nop
+  76:	08 95       	ret
+
+00000078 <OwClient_Pullup>:
+
+
+
+//-------------------------------------------------------------------[Включить поддтяжку порта для зарядки устройства]--- 
+void OwClient_Pullup(bool A){
+	if (A) {
+  78:	88 23       	and	r24, r24
+  7a:	69 f0       	breq	.+26     	; 0x96 <OwClient_Pullup+0x1e>
+ 		ClrBit(DeviceQ_PORT);	
+  7c:	92 b3       	in	r25, 0x12	; 18
+  7e:	82 b3       	in	r24, 0x12	; 18
+  80:	84 70       	andi	r24, 0x04	; 4
+  82:	89 27       	eor	r24, r25
+  84:	82 bb       	out	0x12, r24	; 18
+		NOP;
+  86:	00 00       	nop
+	 	ClrBit(DeviceQ_DDR);	
+  88:	91 b3       	in	r25, 0x11	; 17
+  8a:	81 b3       	in	r24, 0x11	; 17
+  8c:	84 70       	andi	r24, 0x04	; 4
+  8e:	89 27       	eor	r24, r25
+  90:	81 bb       	out	0x11, r24	; 17
+		NOP;
+  92:	00 00       	nop
+  94:	08 95       	ret
+		}				// для зарядки аккумулятора устройства на порту}
+ 	else	{
+		ClrBit(DeviceQ_PORT);	
+  96:	92 b3       	in	r25, 0x12	; 18
+  98:	82 b3       	in	r24, 0x12	; 18
+  9a:	84 70       	andi	r24, 0x04	; 4
+  9c:	89 27       	eor	r24, r25
+  9e:	82 bb       	out	0x12, r24	; 18
+		NOP;
+  a0:	00 00       	nop
+		SetBit(DeviceQ_DDR);	
+  a2:	8a 9a       	sbi	0x11, 2	; 17
+		NOP;
+  a4:	00 00       	nop
+  a6:	08 95       	ret
+
+000000a8 <OwClient_Init>:
+//----------------------------------------------------------------------------------------------------------------------- 
+
+
+//-------------------------------------------------------------[установка начального направления порта для устройства]--- 
+void OwClient_Init(void){
+	OwClient_Pullup(1);								// для зарядки аккумулятора устройства на порту
+  a8:	81 e0       	ldi	r24, 0x01	; 1
+  aa:	e6 df       	rcall	.-52     	; 0x78 <OwClient_Pullup>
+	}
+  ac:	08 95       	ret
+
+000000ae <OwClient_read_bit>:
+//----------------------------------------------------------------------------------------------------------------------- 
+
+
+//-------------------------------------------------------------------------------------------------[OwClient_read_bit]--- 
+u08 OwClient_read_bit(void){
+  ae:	04 c0       	rjmp	.+8      	; 0xb8 <OwClient_read_bit+0xa>
+	u08 result = 0x00;
+	while (GetBitH(DeviceQ_PIN)) {if (_deviceQ_Is_Reset==1) break;};
+  b0:	80 91 8a 00 	lds	r24, 0x008A
+  b4:	81 30       	cpi	r24, 0x01	; 1
+  b6:	11 f0       	breq	.+4      	; 0xbc <OwClient_read_bit+0xe>
+  b8:	82 99       	sbic	0x10, 2	; 16
+  ba:	fa cf       	rjmp	.-12     	; 0xb0 <OwClient_read_bit+0x2>
+    can be achieved.
+*/
+void
+_delay_loop_1(uint8_t __count)
+{
+	__asm__ volatile (
+  bc:	80 e5       	ldi	r24, 0x50	; 80
+  be:	8a 95       	dec	r24
+  c0:	f1 f7       	brne	.-4      	; 0xbe <OwClient_read_bit+0x10>
+	_delay_us(DeviceQ_delay_A);																			// задержка 15us 
+  if (GetBitH(DeviceQ_PIN))	result = 0x01; else result = 0x00;		// если на ножке логическая 1 результат 1 								
+  c2:	80 b3       	in	r24, 0x10	; 16
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+  c4:	e8 ec       	ldi	r30, 0xC8	; 200
+  c6:	f0 e0       	ldi	r31, 0x00	; 0
+  c8:	31 97       	sbiw	r30, 0x01	; 1
+  ca:	f1 f7       	brne	.-4      	; 0xc8 <OwClient_read_bit+0x1a>
+  cc:	90 e0       	ldi	r25, 0x00	; 0
+  ce:	96 95       	lsr	r25
+  d0:	87 95       	ror	r24
+  d2:	96 95       	lsr	r25
+  d4:	87 95       	ror	r24
+	_delay_us(DeviceQ_delay_F);																			// жду конец таймслота
+	return (result);																								// возвращаем значение линии данных
+	}
+  d6:	81 70       	andi	r24, 0x01	; 1
+  d8:	08 95       	ret
+
+000000da <OwClient_read_byte>:
+//----------------------------------------------------------------------------------------------------------------------- 
+
+//------------------------------------------------------------------------------------------------[OwClient_read_byte]--- 
+u08 OwClient_read_byte(void){
+  da:	1f 93       	push	r17
+  dc:	cf 93       	push	r28
+  de:	df 93       	push	r29
+  e0:	10 e0       	ldi	r17, 0x00	; 0
+  e2:	c0 e0       	ldi	r28, 0x00	; 0
+  e4:	d0 e0       	ldi	r29, 0x00	; 0
+	u08 result = 0x00;
+ 	for(int i = 0; i < 8; i++) {																		// цикл чтения бит
+		if (_deviceQ_Is_Reset==1) break;
+  e6:	80 91 8a 00 	lds	r24, 0x008A
+  ea:	81 30       	cpi	r24, 0x01	; 1
+  ec:	69 f0       	breq	.+26     	; 0x108 <OwClient_read_byte+0x2e>
+		result |= OwClient_read_bit() << i;
+  ee:	df df       	rcall	.-66     	; 0xae <OwClient_read_bit>
+  f0:	90 e0       	ldi	r25, 0x00	; 0
+  f2:	0c 2e       	mov	r0, r28
+  f4:	02 c0       	rjmp	.+4      	; 0xfa <OwClient_read_byte+0x20>
+  f6:	88 0f       	add	r24, r24
+  f8:	99 1f       	adc	r25, r25
+  fa:	0a 94       	dec	r0
+  fc:	e2 f7       	brpl	.-8      	; 0xf6 <OwClient_read_byte+0x1c>
+  fe:	18 2b       	or	r17, r24
+//----------------------------------------------------------------------------------------------------------------------- 
+
+//------------------------------------------------------------------------------------------------[OwClient_read_byte]--- 
+u08 OwClient_read_byte(void){
+	u08 result = 0x00;
+ 	for(int i = 0; i < 8; i++) {																		// цикл чтения бит
+ 100:	21 96       	adiw	r28, 0x01	; 1
+ 102:	c8 30       	cpi	r28, 0x08	; 8
+ 104:	d1 05       	cpc	r29, r1
+ 106:	79 f7       	brne	.-34     	; 0xe6 <OwClient_read_byte+0xc>
+		if (_deviceQ_Is_Reset==1) break;
+		result |= OwClient_read_bit() << i;
+ 		};
+	return (result);	
+	}
+ 108:	81 2f       	mov	r24, r17
+ 10a:	df 91       	pop	r29
+ 10c:	cf 91       	pop	r28
+ 10e:	1f 91       	pop	r17
+ 110:	08 95       	ret
+
+00000112 <OwClient_write_1>:
+    can be achieved.
+*/
+void
+_delay_loop_1(uint8_t __count)
+{
+	__asm__ volatile (
+ 112:	80 e3       	ldi	r24, 0x30	; 48
+ 114:	8a 95       	dec	r24
+ 116:	f1 f7       	brne	.-4      	; 0x114 <OwClient_write_1+0x2>
+//----------------------------------------------------------------------------------------------------------------------- 
+//--------------------------------------------------------------------------------------------------[OwClient_write_1]--- 
+void OwClient_write_1(void){
+	_delay_us(DeviceQ_delay_E);
+	OwClient_Pullup(1);
+ 118:	81 e0       	ldi	r24, 0x01	; 1
+ 11a:	ae df       	rcall	.-164    	; 0x78 <OwClient_Pullup>
+ 11c:	80 e9       	ldi	r24, 0x90	; 144
+ 11e:	8a 95       	dec	r24
+ 120:	f1 f7       	brne	.-4      	; 0x11e <OwClient_write_1+0xc>
+	_delay_us(27);
+}
+ 122:	08 95       	ret
+
+00000124 <OwClient_write_0>:
+//----------------------------------------------------------------------------------------------------------------------- 
+//--------------------------------------------------------------------------------------------------[OwClient_write_0]--- 
+void OwClient_write_0(void){
+ 	OwClient_Pullup(0);
+ 124:	80 e0       	ldi	r24, 0x00	; 0
+ 126:	a8 df       	rcall	.-176    	; 0x78 <OwClient_Pullup>
+ 128:	80 e9       	ldi	r24, 0x90	; 144
+ 12a:	8a 95       	dec	r24
+ 12c:	f1 f7       	brne	.-4      	; 0x12a <OwClient_write_0+0x6>
+	_delay_us(27);
+	OwClient_Pullup(1);
+ 12e:	81 e0       	ldi	r24, 0x01	; 1
+ 130:	a3 df       	rcall	.-186    	; 0x78 <OwClient_Pullup>
+}
+ 132:	08 95       	ret
+
+00000134 <OwClient_write_bit>:
+
+//----------------------------------------------------------------------------------------------------------------------- 
+//------------------------------------------------------------------------------------------------[OwClient_write_bit]--- 
+void OwClient_write_bit(u08 data){
+ 134:	98 2f       	mov	r25, r24
+ 136:	04 c0       	rjmp	.+8      	; 0x140 <OwClient_write_bit+0xc>
+	while (GetBitH(DeviceQ_PIN)) {if (_deviceQ_Is_Reset==1) break;};  
+ 138:	80 91 8a 00 	lds	r24, 0x008A
+ 13c:	81 30       	cpi	r24, 0x01	; 1
+ 13e:	11 f0       	breq	.+4      	; 0x144 <OwClient_write_bit+0x10>
+ 140:	82 99       	sbic	0x10, 2	; 16
+ 142:	fa cf       	rjmp	.-12     	; 0x138 <OwClient_write_bit+0x4>
+	if (data !=0)	OwClient_write_1();																	// выводим очередной бит начиная с младшего
+ 144:	99 23       	and	r25, r25
+ 146:	11 f0       	breq	.+4      	; 0x14c <OwClient_write_bit+0x18>
+ 148:	e4 df       	rcall	.-56     	; 0x112 <OwClient_write_1>
+ 14a:	08 95       	ret
+  	else				OwClient_write_0();
+ 14c:	eb df       	rcall	.-42     	; 0x124 <OwClient_write_0>
+ 14e:	08 95       	ret
+
+00000150 <OwClient_write_byte>:
+	}
+//----------------------------------------------------------------------------------------------------------------------- 
+//-----------------------------------------------------------------------------------------------[OwClient_write_byte]--- 
+void OwClient_write_byte(u08 data){
+ 150:	0f 93       	push	r16
+ 152:	1f 93       	push	r17
+ 154:	08 2f       	mov	r16, r24
+ 156:	18 e0       	ldi	r17, 0x08	; 8
+	char count = 8;																										// формируем счетчик бит
+	do{																																// цикл вывода бит на шину
+		if (_deviceQ_Is_Reset==1) break;
+ 158:	80 91 8a 00 	lds	r24, 0x008A
+ 15c:	81 30       	cpi	r24, 0x01	; 1
+ 15e:	39 f0       	breq	.+14     	; 0x16e <OwClient_write_byte+0x1e>
+		OwClient_write_bit(data & 0x01);																// выводим очередной бит начиная с младшего
+ 160:	80 2f       	mov	r24, r16
+ 162:	81 70       	andi	r24, 0x01	; 1
+ 164:	e7 df       	rcall	.-50     	; 0x134 <OwClient_write_bit>
+  	data >>= 1;																											// сдвигаем данные вправо и проверяем окончание цикла
+ 		} while(--count);
+ 166:	11 50       	subi	r17, 0x01	; 1
+ 168:	11 f0       	breq	.+4      	; 0x16e <OwClient_write_byte+0x1e>
+void OwClient_write_byte(u08 data){
+	char count = 8;																										// формируем счетчик бит
+	do{																																// цикл вывода бит на шину
+		if (_deviceQ_Is_Reset==1) break;
+		OwClient_write_bit(data & 0x01);																// выводим очередной бит начиная с младшего
+  	data >>= 1;																											// сдвигаем данные вправо и проверяем окончание цикла
+ 16a:	06 95       	lsr	r16
+ 16c:	f5 cf       	rjmp	.-22     	; 0x158 <OwClient_write_byte+0x8>
+ 		} while(--count);
+	}
+ 16e:	1f 91       	pop	r17
+ 170:	0f 91       	pop	r16
+ 172:	08 95       	ret
+
+00000174 <OwClient_Present>:
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+ 174:	88 ec       	ldi	r24, 0xC8	; 200
+ 176:	90 e0       	ldi	r25, 0x00	; 0
+ 178:	01 97       	sbiw	r24, 0x01	; 1
+ 17a:	f1 f7       	brne	.-4      	; 0x178 <OwClient_Present+0x4>
+
+
+//--------------------------------------------------------------------------------------------------[OwClient_Present]--- 
+void OwClient_Present(void){
+	_delay_us(DeviceQ_delay_F);
+	OwClient_Pullup(0);
+ 17c:	80 e0       	ldi	r24, 0x00	; 0
+ 17e:	7c df       	rcall	.-264    	; 0x78 <OwClient_Pullup>
+ 180:	88 eb       	ldi	r24, 0xB8	; 184
+ 182:	91 e0       	ldi	r25, 0x01	; 1
+ 184:	01 97       	sbiw	r24, 0x01	; 1
+ 186:	f1 f7       	brne	.-4      	; 0x184 <OwClient_Present+0x10>
+	_delay_us(DeviceQ_delay_P);
+	OwClient_Pullup(1);
+ 188:	81 e0       	ldi	r24, 0x01	; 1
+ 18a:	76 df       	rcall	.-276    	; 0x78 <OwClient_Pullup>
+	}
+ 18c:	08 95       	ret
+
+0000018e <OwClient_read_Rom>:
+//----------------------------------------------------------------------------------------------------------------------- 
+//-----------------------------------------------------------------------------------------------------------[Rom CMD]--- 
+//-------------------------------------------------------------------------------------------------[OwClient_read_Rom]--- 
+void OwClient_read_Rom(void){
+ 18e:	cf 93       	push	r28
+ 190:	df 93       	push	r29
+ 192:	cb e8       	ldi	r28, 0x8B	; 139
+ 194:	d0 e0       	ldi	r29, 0x00	; 0
+	for (u08 i = 0; i < 8; i++) OwClient_write_byte(_OwClient_rom[i]);
+ 196:	89 91       	ld	r24, Y+
+ 198:	db df       	rcall	.-74     	; 0x150 <OwClient_write_byte>
+ 19a:	80 e0       	ldi	r24, 0x00	; 0
+ 19c:	c3 39       	cpi	r28, 0x93	; 147
+ 19e:	d8 07       	cpc	r29, r24
+ 1a0:	d1 f7       	brne	.-12     	; 0x196 <OwClient_read_Rom+0x8>
+	}
+ 1a2:	df 91       	pop	r29
+ 1a4:	cf 91       	pop	r28
+ 1a6:	08 95       	ret
+
+000001a8 <OwClient_match_Rom>:
+//----------------------------------------------------------------------------------------------------------------------- 
+//------------------------------------------------------------------------------------------------[OwClient_match_Rom]--- 
+void OwClient_match_Rom(void){
+ 1a8:	cf 93       	push	r28
+ 1aa:	df 93       	push	r29
+ 1ac:	cb e8       	ldi	r28, 0x8B	; 139
+ 1ae:	d0 e0       	ldi	r29, 0x00	; 0
+	for (u08 i = 0; i < 8; i++)
+		if (OwClient_read_byte() != _OwClient_rom[i]) {
+ 1b0:	94 df       	rcall	.-216    	; 0xda <OwClient_read_byte>
+ 1b2:	98 81       	ld	r25, Y
+ 1b4:	89 17       	cp	r24, r25
+ 1b6:	29 f0       	breq	.+10     	; 0x1c2 <OwClient_match_Rom+0x1a>
+			while (_deviceQ_Is_Reset !=1); 
+ 1b8:	80 91 8a 00 	lds	r24, 0x008A
+ 1bc:	81 30       	cpi	r24, 0x01	; 1
+ 1be:	e1 f7       	brne	.-8      	; 0x1b8 <OwClient_match_Rom+0x10>
+ 1c0:	05 c0       	rjmp	.+10     	; 0x1cc <OwClient_match_Rom+0x24>
+ 1c2:	21 96       	adiw	r28, 0x01	; 1
+	for (u08 i = 0; i < 8; i++) OwClient_write_byte(_OwClient_rom[i]);
+	}
+//----------------------------------------------------------------------------------------------------------------------- 
+//------------------------------------------------------------------------------------------------[OwClient_match_Rom]--- 
+void OwClient_match_Rom(void){
+	for (u08 i = 0; i < 8; i++)
+ 1c4:	80 e0       	ldi	r24, 0x00	; 0
+ 1c6:	c3 39       	cpi	r28, 0x93	; 147
+ 1c8:	d8 07       	cpc	r29, r24
+ 1ca:	91 f7       	brne	.-28     	; 0x1b0 <OwClient_match_Rom+0x8>
+		if (OwClient_read_byte() != _OwClient_rom[i]) {
+			while (_deviceQ_Is_Reset !=1); 
+			break;
+			};
+	}
+ 1cc:	df 91       	pop	r29
+ 1ce:	cf 91       	pop	r28
+ 1d0:	08 95       	ret
+
+000001d2 <OwClient_search_Rom>:
+//----------------------------------------------------------------------------------------------------------------------- 
+//-----------------------------------------------------------------------------------------------[OwClient_search_Rom]--- 
+void OwClient_search_Rom(void){
+ 1d2:	ef 92       	push	r14
+ 1d4:	ff 92       	push	r15
+ 1d6:	0f 93       	push	r16
+ 1d8:	1f 93       	push	r17
+ 1da:	cf 93       	push	r28
+ 1dc:	df 93       	push	r29
+ 1de:	cb e8       	ldi	r28, 0x8B	; 139
+ 1e0:	d0 e0       	ldi	r29, 0x00	; 0
+	for (u08 i = 0; i < 8; i++) {
+		char count = 8;	
+		char data	=	_OwClient_rom[i];
+ 1e2:	f8 80       	ld	r15, Y
+		if (_deviceQ_Is_Reset==1) break;
+ 1e4:	80 91 8a 00 	lds	r24, 0x008A
+ 1e8:	81 30       	cpi	r24, 0x01	; 1
+ 1ea:	29 f1       	breq	.+74     	; 0x236 <OwClient_search_Rom+0x64>
+ 1ec:	38 e0       	ldi	r19, 0x08	; 8
+ 1ee:	e3 2e       	mov	r14, r19
+		do{
+			if (_deviceQ_Is_Reset==1) break;
+ 1f0:	80 91 8a 00 	lds	r24, 0x008A
+ 1f4:	81 30       	cpi	r24, 0x01	; 1
+ 1f6:	d1 f0       	breq	.+52     	; 0x22c <OwClient_search_Rom+0x5a>
+			OwClient_write_bit(data & 0x01);																// выводим очередной бит начиная с младшего
+ 1f8:	8f 2d       	mov	r24, r15
+ 1fa:	81 70       	andi	r24, 0x01	; 1
+ 1fc:	9b df       	rcall	.-202    	; 0x134 <OwClient_write_bit>
+			OwClient_write_bit((data & 0x01) ^ 0x01);												// выводим очередной бит начиная с младшего 		
+ 1fe:	8f 2d       	mov	r24, r15
+ 200:	90 e0       	ldi	r25, 0x00	; 0
+ 202:	20 e0       	ldi	r18, 0x00	; 0
+ 204:	8c 01       	movw	r16, r24
+ 206:	01 70       	andi	r16, 0x01	; 1
+ 208:	10 70       	andi	r17, 0x00	; 0
+ 20a:	f0 fe       	sbrs	r15, 0
+ 20c:	21 e0       	ldi	r18, 0x01	; 1
+ 20e:	82 2f       	mov	r24, r18
+ 210:	91 df       	rcall	.-222    	; 0x134 <OwClient_write_bit>
+			if (OwClient_read_bit() != (data & 0x01)) while (_deviceQ_Is_Reset !=1); 
+ 212:	4d df       	rcall	.-358    	; 0xae <OwClient_read_bit>
+ 214:	90 e0       	ldi	r25, 0x00	; 0
+ 216:	80 17       	cp	r24, r16
+ 218:	91 07       	cpc	r25, r17
+ 21a:	21 f0       	breq	.+8      	; 0x224 <OwClient_search_Rom+0x52>
+ 21c:	80 91 8a 00 	lds	r24, 0x008A
+ 220:	81 30       	cpi	r24, 0x01	; 1
+ 222:	e1 f7       	brne	.-8      	; 0x21c <OwClient_search_Rom+0x4a>
+			data >>= 1;																											// сдвигаем данные вправо и проверяем окончание цикла
+ 			} while(--count);
+ 224:	ea 94       	dec	r14
+ 226:	11 f0       	breq	.+4      	; 0x22c <OwClient_search_Rom+0x5a>
+		do{
+			if (_deviceQ_Is_Reset==1) break;
+			OwClient_write_bit(data & 0x01);																// выводим очередной бит начиная с младшего
+			OwClient_write_bit((data & 0x01) ^ 0x01);												// выводим очередной бит начиная с младшего 		
+			if (OwClient_read_bit() != (data & 0x01)) while (_deviceQ_Is_Reset !=1); 
+			data >>= 1;																											// сдвигаем данные вправо и проверяем окончание цикла
+ 228:	f6 94       	lsr	r15
+ 22a:	e2 cf       	rjmp	.-60     	; 0x1f0 <OwClient_search_Rom+0x1e>
+ 22c:	21 96       	adiw	r28, 0x01	; 1
+			};
+	}
+//----------------------------------------------------------------------------------------------------------------------- 
+//-----------------------------------------------------------------------------------------------[OwClient_search_Rom]--- 
+void OwClient_search_Rom(void){
+	for (u08 i = 0; i < 8; i++) {
+ 22e:	80 e0       	ldi	r24, 0x00	; 0
+ 230:	c3 39       	cpi	r28, 0x93	; 147
+ 232:	d8 07       	cpc	r29, r24
+ 234:	b1 f6       	brne	.-84     	; 0x1e2 <OwClient_search_Rom+0x10>
+			OwClient_write_bit((data & 0x01) ^ 0x01);												// выводим очередной бит начиная с младшего 		
+			if (OwClient_read_bit() != (data & 0x01)) while (_deviceQ_Is_Reset !=1); 
+			data >>= 1;																											// сдвигаем данные вправо и проверяем окончание цикла
+ 			} while(--count);
+		};
+	}
+ 236:	df 91       	pop	r29
+ 238:	cf 91       	pop	r28
+ 23a:	1f 91       	pop	r17
+ 23c:	0f 91       	pop	r16
+ 23e:	ff 90       	pop	r15
+ 240:	ef 90       	pop	r14
+ 242:	08 95       	ret
+
+00000244 <OwClient_write_ScratchPad>:
+//-----------------------------------------------------------------------------------------------------------------------   
+//----------------------------------------------------------------------------------------------------------------------- 
+//-----------------------------------------------------------------------------------------------------------[Ram CMD]---
+//-----------------------------------------------------------------------------------------[OwClient_write_ScratchPad]--- 
+void OwClient_write_ScratchPad(void){
+ 244:	1f 93       	push	r17
+	u08 adr = 0;
+	adr = OwClient_read_byte();
+ 246:	49 df       	rcall	.-366    	; 0xda <OwClient_read_byte>
+ 248:	18 2f       	mov	r17, r24
+	do {
+		_OwClient_ScratchPad[adr]=OwClient_read_byte();		
+ 24a:	47 df       	rcall	.-370    	; 0xda <OwClient_read_byte>
+ 24c:	e1 2f       	mov	r30, r17
+ 24e:	f0 e0       	ldi	r31, 0x00	; 0
+ 250:	ee 59       	subi	r30, 0x9E	; 158
+ 252:	ff 4f       	sbci	r31, 0xFF	; 255
+ 254:	80 83       	st	Z, r24
+		if (adr<31) adr++; else adr=0;
+ 256:	1f 31       	cpi	r17, 0x1F	; 31
+ 258:	10 f0       	brcs	.+4      	; 0x25e <OwClient_write_ScratchPad+0x1a>
+ 25a:	10 e0       	ldi	r17, 0x00	; 0
+ 25c:	01 c0       	rjmp	.+2      	; 0x260 <OwClient_write_ScratchPad+0x1c>
+ 25e:	1f 5f       	subi	r17, 0xFF	; 255
+		} while (_deviceQ_Is_Reset !=1);
+ 260:	80 91 8a 00 	lds	r24, 0x008A
+ 264:	81 30       	cpi	r24, 0x01	; 1
+ 266:	89 f7       	brne	.-30     	; 0x24a <OwClient_write_ScratchPad+0x6>
+	}
+ 268:	1f 91       	pop	r17
+ 26a:	08 95       	ret
+
+0000026c <OwClient_read_ScratchPad>:
+//----------------------------------------------------------------------------------------------------------------------- 
+//------------------------------------------------------------------------------------------[OwClient_read_ScratchPad]--- 
+void OwClient_read_ScratchPad(void){
+ 26c:	1f 93       	push	r17
+	u08 adr = 0;
+	adr = OwClient_read_byte();
+ 26e:	35 df       	rcall	.-406    	; 0xda <OwClient_read_byte>
+ 270:	18 2f       	mov	r17, r24
+	do {
+		OwClient_write_byte(	_OwClient_ScratchPad[adr]);		
+ 272:	e1 2f       	mov	r30, r17
+ 274:	f0 e0       	ldi	r31, 0x00	; 0
+ 276:	ee 59       	subi	r30, 0x9E	; 158
+ 278:	ff 4f       	sbci	r31, 0xFF	; 255
+ 27a:	80 81       	ld	r24, Z
+ 27c:	69 df       	rcall	.-302    	; 0x150 <OwClient_write_byte>
+		if (adr<31) adr++; else adr=0;
+ 27e:	1f 31       	cpi	r17, 0x1F	; 31
+ 280:	10 f0       	brcs	.+4      	; 0x286 <OwClient_read_ScratchPad+0x1a>
+ 282:	10 e0       	ldi	r17, 0x00	; 0
+ 284:	01 c0       	rjmp	.+2      	; 0x288 <OwClient_read_ScratchPad+0x1c>
+ 286:	1f 5f       	subi	r17, 0xFF	; 255
+		} while (_deviceQ_Is_Reset !=1);
+ 288:	80 91 8a 00 	lds	r24, 0x008A
+ 28c:	81 30       	cpi	r24, 0x01	; 1
+ 28e:	89 f7       	brne	.-30     	; 0x272 <OwClient_read_ScratchPad+0x6>
+	}
+ 290:	1f 91       	pop	r17
+ 292:	08 95       	ret
+
+00000294 <OwClient_write_AppReg>:
+		eeprom_write_block(_OwClient_ScratchPad, ERam, 32);
+	do {} while (_deviceQ_Is_Reset !=1);
+	}
+//----------------------------------------------------------------------------------------------------------------------- 
+//---------------------------------------------------------------------------------------------[OwClient_write_AppReg]--- 
+void OwClient_write_AppReg(void){
+ 294:	1f 93       	push	r17
+	u08 adr = 0;
+	adr = OwClient_read_byte();
+ 296:	21 df       	rcall	.-446    	; 0xda <OwClient_read_byte>
+ 298:	18 2f       	mov	r17, r24
+	do {
+		_OwClient_AppReg[adr]=OwClient_read_byte();		
+ 29a:	1f df       	rcall	.-450    	; 0xda <OwClient_read_byte>
+ 29c:	e1 2f       	mov	r30, r17
+ 29e:	f0 e0       	ldi	r31, 0x00	; 0
+ 2a0:	ee 57       	subi	r30, 0x7E	; 126
+ 2a2:	ff 4f       	sbci	r31, 0xFF	; 255
+ 2a4:	80 83       	st	Z, r24
+		if (adr<7) adr++; else adr=0;
+ 2a6:	17 30       	cpi	r17, 0x07	; 7
+ 2a8:	10 f0       	brcs	.+4      	; 0x2ae <OwClient_write_AppReg+0x1a>
+ 2aa:	10 e0       	ldi	r17, 0x00	; 0
+ 2ac:	01 c0       	rjmp	.+2      	; 0x2b0 <OwClient_write_AppReg+0x1c>
+ 2ae:	1f 5f       	subi	r17, 0xFF	; 255
+		} while (_deviceQ_Is_Reset !=1);
+ 2b0:	80 91 8a 00 	lds	r24, 0x008A
+ 2b4:	81 30       	cpi	r24, 0x01	; 1
+ 2b6:	89 f7       	brne	.-30     	; 0x29a <OwClient_write_AppReg+0x6>
+	}
+ 2b8:	1f 91       	pop	r17
+ 2ba:	08 95       	ret
+
+000002bc <OwClient_read_StatusReg>:
+//----------------------------------------------------------------------------------------------------------------------- 
+//-------------------------------------------------------------------------------------------[OwClient_read_StatusReg]--- 
+void OwClient_read_StatusReg(void){
+	if (OwClient_read_byte() == 0x00) 
+ 2bc:	0e df       	rcall	.-484    	; 0xda <OwClient_read_byte>
+ 2be:	88 23       	and	r24, r24
+ 2c0:	29 f4       	brne	.+10     	; 0x2cc <OwClient_read_StatusReg+0x10>
+		OwClient_write_byte(_OwClient_StatusReg[0]);
+ 2c2:	80 91 93 00 	lds	r24, 0x0093
+ 2c6:	01 c0       	rjmp	.+2      	; 0x2ca <OwClient_read_StatusReg+0xe>
+	while (_deviceQ_Is_Reset !=1) OwClient_write_byte(1);
+ 2c8:	81 e0       	ldi	r24, 0x01	; 1
+ 2ca:	42 df       	rcall	.-380    	; 0x150 <OwClient_write_byte>
+ 2cc:	80 91 8a 00 	lds	r24, 0x008A
+ 2d0:	81 30       	cpi	r24, 0x01	; 1
+ 2d2:	d1 f7       	brne	.-12     	; 0x2c8 <OwClient_read_StatusReg+0xc>
+	}
+ 2d4:	08 95       	ret
+
+000002d6 <OwClient_read_AppReg>:
+//----------------------------------------------------------------------------------------------------------------------- 
+//----------------------------------------------------------------------------------------------[OwClient_read_AppReg]--- 
+void OwClient_read_AppReg(void){
+ 2d6:	1f 93       	push	r17
+	u08 adr = 0;
+	adr = OwClient_read_byte();
+ 2d8:	00 df       	rcall	.-512    	; 0xda <OwClient_read_byte>
+ 2da:	18 2f       	mov	r17, r24
+	do {
+		OwClient_write_byte(_OwClient_AppReg[adr]);		
+ 2dc:	e1 2f       	mov	r30, r17
+ 2de:	f0 e0       	ldi	r31, 0x00	; 0
+ 2e0:	ee 57       	subi	r30, 0x7E	; 126
+ 2e2:	ff 4f       	sbci	r31, 0xFF	; 255
+ 2e4:	80 81       	ld	r24, Z
+ 2e6:	34 df       	rcall	.-408    	; 0x150 <OwClient_write_byte>
+		if (adr<7) adr++; else adr=0;
+ 2e8:	17 30       	cpi	r17, 0x07	; 7
+ 2ea:	10 f0       	brcs	.+4      	; 0x2f0 <OwClient_read_AppReg+0x1a>
+ 2ec:	10 e0       	ldi	r17, 0x00	; 0
+ 2ee:	01 c0       	rjmp	.+2      	; 0x2f2 <OwClient_read_AppReg+0x1c>
+ 2f0:	1f 5f       	subi	r17, 0xFF	; 255
+		} while (_deviceQ_Is_Reset !=1);
+ 2f2:	80 91 8a 00 	lds	r24, 0x008A
+ 2f6:	81 30       	cpi	r24, 0x01	; 1
+ 2f8:	89 f7       	brne	.-30     	; 0x2dc <OwClient_read_AppReg+0x6>
+	}
+ 2fa:	1f 91       	pop	r17
+ 2fc:	08 95       	ret
+
+000002fe <OwClient_check_Ram_CMD>:
+	}
+//----------------------------------------------------------------------------------------------------------------------- 
+//----------------------------------------------------------------------------------------------------------------------- 
+//--------------------------------------------------------------------------------------------[OwClient_check_Ram_CMD]--- 
+void OwClient_check_Ram_CMD(u08 cmd){
+	switch(cmd) {
+ 2fe:	85 35       	cpi	r24, 0x55	; 85
+ 300:	61 f0       	breq	.+24     	; 0x31a <OwClient_check_Ram_CMD+0x1c>
+ 302:	86 35       	cpi	r24, 0x56	; 86
+ 304:	18 f4       	brcc	.+6      	; 0x30c <OwClient_check_Ram_CMD+0xe>
+ 306:	83 33       	cpi	r24, 0x33	; 51
+ 308:	61 f4       	brne	.+24     	; 0x322 <OwClient_check_Ram_CMD+0x24>
+ 30a:	05 c0       	rjmp	.+10     	; 0x316 <OwClient_check_Ram_CMD+0x18>
+ 30c:	8c 3c       	cpi	r24, 0xCC	; 204
+ 30e:	69 f0       	breq	.+26     	; 0x32a <OwClient_check_Ram_CMD+0x2c>
+ 310:	80 3f       	cpi	r24, 0xF0	; 240
+ 312:	39 f4       	brne	.+14     	; 0x322 <OwClient_check_Ram_CMD+0x24>
+ 314:	04 c0       	rjmp	.+8      	; 0x31e <OwClient_check_Ram_CMD+0x20>
+		case READ_ROM: OwClient_read_Rom(); break;
+ 316:	3b df       	rcall	.-394    	; 0x18e <OwClient_read_Rom>
+ 318:	08 95       	ret
+		case MATCH_ROM: OwClient_match_Rom(); break;
+ 31a:	46 df       	rcall	.-372    	; 0x1a8 <OwClient_match_Rom>
+ 31c:	08 95       	ret
+		case SEARCH_ROM: OwClient_search_Rom(); break;
+ 31e:	59 df       	rcall	.-334    	; 0x1d2 <OwClient_search_Rom>
+ 320:	08 95       	ret
+		case SKIP_ROM: break;
+		default: while (_deviceQ_Is_Reset !=1); break;
+ 322:	80 91 8a 00 	lds	r24, 0x008A
+ 326:	81 30       	cpi	r24, 0x01	; 1
+ 328:	e1 f7       	brne	.-8      	; 0x322 <OwClient_check_Ram_CMD+0x24>
+ 32a:	08 95       	ret
+
+0000032c <MainInit>:
+	void MainInit(void);	
+
+	void MainInit(void){
+
+	DDRD 	|= 0<<PD2|0<<PD3;
+ 32c:	81 b3       	in	r24, 0x11	; 17
+ 32e:	81 bb       	out	0x11, r24	; 17
+	PORTD |= 0<<PD2|0<<PD3;
+ 330:	82 b3       	in	r24, 0x12	; 18
+ 332:	82 bb       	out	0x12, r24	; 18
+
+	DDRC |= 1<<PC5;
+ 334:	a5 9a       	sbi	0x14, 5	; 20
+	PORTC |= 1<<PC5;
+ 336:	ad 9a       	sbi	0x15, 5	; 21
+
+
+	MCUCR |= 0<<ISC01|1<<ISC00;
+ 338:	85 b7       	in	r24, 0x35	; 53
+ 33a:	81 60       	ori	r24, 0x01	; 1
+ 33c:	85 bf       	out	0x35, r24	; 53
+	GIMSK=1<<INT0;
+ 33e:	80 e4       	ldi	r24, 0x40	; 64
+ 340:	8b bf       	out	0x3b, r24	; 59
+
+	
+	TIMSK=1<<TOIE0;//Разрешение припиваний Т0
+ 342:	81 e0       	ldi	r24, 0x01	; 1
+ 344:	89 bf       	out	0x39, r24	; 57
+
+
+
+	sei();
+ 346:	78 94       	sei
+	
+	OwClient_Init();
+ 348:	af de       	rcall	.-674    	; 0xa8 <OwClient_Init>
+
+
+	};
+ 34a:	08 95       	ret
+
+0000034c <__vector_9>:
+ISR (TIMER0_OVF_vect) {
+ 34c:	1f 92       	push	r1
+ 34e:	0f 92       	push	r0
+ 350:	0f b6       	in	r0, 0x3f	; 63
+ 352:	0f 92       	push	r0
+ 354:	11 24       	eor	r1, r1
+ 356:	8f 93       	push	r24
+	_deviceQ_last_line=255;
+ 358:	8f ef       	ldi	r24, 0xFF	; 255
+ 35a:	80 93 61 00 	sts	0x0061, r24
+	}
+ 35e:	8f 91       	pop	r24
+ 360:	0f 90       	pop	r0
+ 362:	0f be       	out	0x3f, r0	; 63
+ 364:	0f 90       	pop	r0
+ 366:	1f 90       	pop	r1
+ 368:	18 95       	reti
+
+0000036a <__vector_1>:
+
+ISR(INT0_vect){				// Обработчик прерывания INT0
+ 36a:	1f 92       	push	r1
+ 36c:	0f 92       	push	r0
+ 36e:	0f b6       	in	r0, 0x3f	; 63
+ 370:	0f 92       	push	r0
+ 372:	11 24       	eor	r1, r1
+ 374:	8f 93       	push	r24
+	if (GetBitH(DeviceQ_PIN)){
+ 376:	82 9b       	sbis	0x10, 2	; 16
+ 378:	10 c0       	rjmp	.+32     	; 0x39a <__vector_1+0x30>
+		TCCR0=0;
+ 37a:	13 be       	out	0x33, r1	; 51
+		if (_deviceQ_last_line != 255) _deviceQ_last_line = TCNT0;
+ 37c:	80 91 61 00 	lds	r24, 0x0061
+ 380:	8f 3f       	cpi	r24, 0xFF	; 255
+ 382:	19 f0       	breq	.+6      	; 0x38a <__vector_1+0x20>
+ 384:	82 b7       	in	r24, 0x32	; 50
+ 386:	80 93 61 00 	sts	0x0061, r24
+		if (_deviceQ_last_line >110) _deviceQ_Is_Reset=1;	
+ 38a:	80 91 61 00 	lds	r24, 0x0061
+ 38e:	8f 36       	cpi	r24, 0x6F	; 111
+ 390:	58 f0       	brcs	.+22     	; 0x3a8 <__vector_1+0x3e>
+ 392:	81 e0       	ldi	r24, 0x01	; 1
+ 394:	80 93 8a 00 	sts	0x008A, r24
+ 398:	07 c0       	rjmp	.+14     	; 0x3a8 <__vector_1+0x3e>
+		}
+		else {
+			TCNT0=0;
+ 39a:	12 be       	out	0x32, r1	; 50
+			SFIOR=1<<PSR10;
+ 39c:	81 e0       	ldi	r24, 0x01	; 1
+ 39e:	80 bf       	out	0x30, r24	; 48
+			TCCR0=3;
+ 3a0:	83 e0       	ldi	r24, 0x03	; 3
+ 3a2:	83 bf       	out	0x33, r24	; 51
+			_deviceQ_last_line=0;
+ 3a4:	10 92 61 00 	sts	0x0061, r1
+			};
+	}
+ 3a8:	8f 91       	pop	r24
+ 3aa:	0f 90       	pop	r0
+ 3ac:	0f be       	out	0x3f, r0	; 63
+ 3ae:	0f 90       	pop	r0
+ 3b0:	1f 90       	pop	r1
+ 3b2:	18 95       	reti
+
+000003b4 <OwClient_lock_AppReg>:
+		} while (_deviceQ_Is_Reset !=1);
+	}
+//----------------------------------------------------------------------------------------------------------------------- 
+//----------------------------------------------------------------------------------------------[OwClient_lock_AppReg]--- 
+void OwClient_lock_AppReg(void){
+	if ((OwClient_read_byte() == 0xA5) && (_OwClient_StatusReg[0] != 0xFC)) { 
+ 3b4:	92 de       	rcall	.-732    	; 0xda <OwClient_read_byte>
+ 3b6:	85 3a       	cpi	r24, 0xA5	; 165
+ 3b8:	a9 f4       	brne	.+42     	; 0x3e4 <OwClient_lock_AppReg+0x30>
+ 3ba:	80 91 93 00 	lds	r24, 0x0093
+ 3be:	8c 3f       	cpi	r24, 0xFC	; 252
+ 3c0:	89 f0       	breq	.+34     	; 0x3e4 <OwClient_lock_AppReg+0x30>
+		_OwClient_StatusReg[0] = 0xFC;
+ 3c2:	8c ef       	ldi	r24, 0xFC	; 252
+ 3c4:	80 93 93 00 	sts	0x0093, r24
+		eeprom_write_block(_OwClient_StatusReg,EStatusReg,1);
+ 3c8:	83 e9       	ldi	r24, 0x93	; 147
+ 3ca:	90 e0       	ldi	r25, 0x00	; 0
+ 3cc:	68 e0       	ldi	r22, 0x08	; 8
+ 3ce:	70 e0       	ldi	r23, 0x00	; 0
+ 3d0:	41 e0       	ldi	r20, 0x01	; 1
+ 3d2:	50 e0       	ldi	r21, 0x00	; 0
+ 3d4:	88 d0       	rcall	.+272    	; 0x4e6 <__eewr_block_m8>
+		eeprom_write_block(_OwClient_AppReg, EAppReg, 8);
+ 3d6:	82 e8       	ldi	r24, 0x82	; 130
+ 3d8:	90 e0       	ldi	r25, 0x00	; 0
+ 3da:	69 e0       	ldi	r22, 0x09	; 9
+ 3dc:	70 e0       	ldi	r23, 0x00	; 0
+ 3de:	48 e0       	ldi	r20, 0x08	; 8
+ 3e0:	50 e0       	ldi	r21, 0x00	; 0
+ 3e2:	81 d0       	rcall	.+258    	; 0x4e6 <__eewr_block_m8>
+		};
+	while (_deviceQ_Is_Reset !=1);
+ 3e4:	80 91 8a 00 	lds	r24, 0x008A
+ 3e8:	81 30       	cpi	r24, 0x01	; 1
+ 3ea:	e1 f7       	brne	.-8      	; 0x3e4 <OwClient_lock_AppReg+0x30>
+	}
+ 3ec:	08 95       	ret
+
+000003ee <OwClient_copy_ScratchPad>:
+		} while (_deviceQ_Is_Reset !=1);
+	}
+//----------------------------------------------------------------------------------------------------------------------- 
+//------------------------------------------------------------------------------------------[OwClient_copy_ScratchPad]--- 
+void OwClient_copy_ScratchPad(void){
+	if (OwClient_read_byte() == 0xA5) 
+ 3ee:	75 de       	rcall	.-790    	; 0xda <OwClient_read_byte>
+ 3f0:	85 3a       	cpi	r24, 0xA5	; 165
+ 3f2:	39 f4       	brne	.+14     	; 0x402 <OwClient_copy_ScratchPad+0x14>
+		eeprom_write_block(_OwClient_ScratchPad, ERam, 32);
+ 3f4:	82 e6       	ldi	r24, 0x62	; 98
+ 3f6:	90 e0       	ldi	r25, 0x00	; 0
+ 3f8:	61 e1       	ldi	r22, 0x11	; 17
+ 3fa:	70 e0       	ldi	r23, 0x00	; 0
+ 3fc:	40 e2       	ldi	r20, 0x20	; 32
+ 3fe:	50 e0       	ldi	r21, 0x00	; 0
+ 400:	72 d0       	rcall	.+228    	; 0x4e6 <__eewr_block_m8>
+	do {} while (_deviceQ_Is_Reset !=1);
+ 402:	80 91 8a 00 	lds	r24, 0x008A
+ 406:	81 30       	cpi	r24, 0x01	; 1
+ 408:	e1 f7       	brne	.-8      	; 0x402 <OwClient_copy_ScratchPad+0x14>
+	}
+ 40a:	08 95       	ret
+
+0000040c <OwClient_check_Rom_CMD>:
+		}
+	}
+//-----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------[OwClient_check_Rom_CMD]--- 
+void OwClient_check_Rom_CMD(u08 cmd){
+	switch(cmd) {
+ 40c:	86 36       	cpi	r24, 0x66	; 102
+ 40e:	e9 f0       	breq	.+58     	; 0x44a <OwClient_check_Rom_CMD+0x3e>
+ 410:	87 36       	cpi	r24, 0x67	; 103
+ 412:	38 f4       	brcc	.+14     	; 0x422 <OwClient_check_Rom_CMD+0x16>
+ 414:	85 35       	cpi	r24, 0x55	; 85
+ 416:	99 f0       	breq	.+38     	; 0x43e <OwClient_check_Rom_CMD+0x32>
+ 418:	8a 35       	cpi	r24, 0x5A	; 90
+ 41a:	d9 f0       	breq	.+54     	; 0x452 <OwClient_check_Rom_CMD+0x46>
+ 41c:	8f 30       	cpi	r24, 0x0F	; 15
+ 41e:	d9 f4       	brne	.+54     	; 0x456 <OwClient_check_Rom_CMD+0x4a>
+ 420:	0c c0       	rjmp	.+24     	; 0x43a <OwClient_check_Rom_CMD+0x2e>
+ 422:	8a 3a       	cpi	r24, 0xAA	; 170
+ 424:	71 f0       	breq	.+28     	; 0x442 <OwClient_check_Rom_CMD+0x36>
+ 426:	8b 3a       	cpi	r24, 0xAB	; 171
+ 428:	18 f4       	brcc	.+6      	; 0x430 <OwClient_check_Rom_CMD+0x24>
+ 42a:	89 39       	cpi	r24, 0x99	; 153
+ 42c:	a1 f4       	brne	.+40     	; 0x456 <OwClient_check_Rom_CMD+0x4a>
+ 42e:	0b c0       	rjmp	.+22     	; 0x446 <OwClient_check_Rom_CMD+0x3a>
+ 430:	83 3c       	cpi	r24, 0xC3	; 195
+ 432:	69 f0       	breq	.+26     	; 0x44e <OwClient_check_Rom_CMD+0x42>
+ 434:	80 3f       	cpi	r24, 0xF0	; 240
+ 436:	79 f4       	brne	.+30     	; 0x456 <OwClient_check_Rom_CMD+0x4a>
+ 438:	04 c0       	rjmp	.+8      	; 0x442 <OwClient_check_Rom_CMD+0x36>
+		case WRITE_SCRATCHPAD: OwClient_write_ScratchPad(); break;
+ 43a:	04 df       	rcall	.-504    	; 0x244 <OwClient_write_ScratchPad>
+ 43c:	08 95       	ret
+		case READ_SCRATCHPAD: OwClient_read_ScratchPad(); break;
+		case COPY_SCRATCHPAD: OwClient_copy_ScratchPad(); break;
+ 43e:	d7 df       	rcall	.-82     	; 0x3ee <OwClient_copy_ScratchPad>
+ 440:	08 95       	ret
+		case READ_MEMORY: OwClient_read_ScratchPad(); break;
+ 442:	14 df       	rcall	.-472    	; 0x26c <OwClient_read_ScratchPad>
+ 444:	08 95       	ret
+		case WRITE_APP_REG: OwClient_write_AppReg(); break;
+ 446:	26 df       	rcall	.-436    	; 0x294 <OwClient_write_AppReg>
+ 448:	08 95       	ret
+		case READ_STATUS_REG: OwClient_read_StatusReg(); break;
+ 44a:	38 df       	rcall	.-400    	; 0x2bc <OwClient_read_StatusReg>
+ 44c:	08 95       	ret
+		case READ_APP_REG: OwClient_read_AppReg(); break;
+ 44e:	43 df       	rcall	.-378    	; 0x2d6 <OwClient_read_AppReg>
+ 450:	08 95       	ret
+		case COPY_LOCK_APP_REG: OwClient_lock_AppReg(); break;
+ 452:	b0 df       	rcall	.-160    	; 0x3b4 <OwClient_lock_AppReg>
+ 454:	08 95       	ret
+		default: while (_deviceQ_Is_Reset !=1); break;
+ 456:	80 91 8a 00 	lds	r24, 0x008A
+ 45a:	81 30       	cpi	r24, 0x01	; 1
+ 45c:	e1 f7       	brne	.-8      	; 0x456 <OwClient_check_Rom_CMD+0x4a>
+ 45e:	08 95       	ret
+
+00000460 <chek>:
+	#define F_CPU 16000000L					/* CPU frequency */
+
+	#include "includes.h"	
+//-----------------------------------------------------------------------------------------------------------------------
+void chek(void){
+	while (_deviceQ_Is_Reset!=1);  
+ 460:	80 91 8a 00 	lds	r24, 0x008A
+ 464:	81 30       	cpi	r24, 0x01	; 1
+ 466:	e1 f7       	brne	.-8      	; 0x460 <chek>
+	OwClient_Present();
+ 468:	85 de       	rcall	.-758    	; 0x174 <OwClient_Present>
+	_deviceQ_Is_Reset =2;
+ 46a:	82 e0       	ldi	r24, 0x02	; 2
+ 46c:	80 93 8a 00 	sts	0x008A, r24
+	OwClient_check_Ram_CMD(OwClient_read_byte());
+ 470:	34 de       	rcall	.-920    	; 0xda <OwClient_read_byte>
+ 472:	45 df       	rcall	.-374    	; 0x2fe <OwClient_check_Ram_CMD>
+	if (_deviceQ_Is_Reset==2) 
+ 474:	80 91 8a 00 	lds	r24, 0x008A
+ 478:	82 30       	cpi	r24, 0x02	; 2
+ 47a:	11 f4       	brne	.+4      	; 0x480 <chek+0x20>
+		OwClient_check_Rom_CMD(OwClient_read_byte());
+ 47c:	2e de       	rcall	.-932    	; 0xda <OwClient_read_byte>
+ 47e:	c6 df       	rcall	.-116    	; 0x40c <OwClient_check_Rom_CMD>
+ 480:	08 95       	ret
+
+00000482 <main>:
+	};
+
+
+
+int main(void){
+	MainInit();
+ 482:	54 df       	rcall	.-344    	; 0x32c <MainInit>
+	eeprom_read_block(_OwClient_rom,ERom,8);
+ 484:	8b e8       	ldi	r24, 0x8B	; 139
+ 486:	90 e0       	ldi	r25, 0x00	; 0
+ 488:	60 e0       	ldi	r22, 0x00	; 0
+ 48a:	70 e0       	ldi	r23, 0x00	; 0
+ 48c:	48 e0       	ldi	r20, 0x08	; 8
+ 48e:	50 e0       	ldi	r21, 0x00	; 0
+ 490:	1a d0       	rcall	.+52     	; 0x4c6 <__eerd_block_m8>
+	eeprom_read_block(_OwClient_StatusReg,EStatusReg,1);
+ 492:	83 e9       	ldi	r24, 0x93	; 147
+ 494:	90 e0       	ldi	r25, 0x00	; 0
+ 496:	68 e0       	ldi	r22, 0x08	; 8
+ 498:	70 e0       	ldi	r23, 0x00	; 0
+ 49a:	41 e0       	ldi	r20, 0x01	; 1
+ 49c:	50 e0       	ldi	r21, 0x00	; 0
+ 49e:	13 d0       	rcall	.+38     	; 0x4c6 <__eerd_block_m8>
+	eeprom_read_block(_OwClient_AppReg,EAppReg,8);
+ 4a0:	82 e8       	ldi	r24, 0x82	; 130
+ 4a2:	90 e0       	ldi	r25, 0x00	; 0
+ 4a4:	69 e0       	ldi	r22, 0x09	; 9
+ 4a6:	70 e0       	ldi	r23, 0x00	; 0
+ 4a8:	48 e0       	ldi	r20, 0x08	; 8
+ 4aa:	50 e0       	ldi	r21, 0x00	; 0
+ 4ac:	0c d0       	rcall	.+24     	; 0x4c6 <__eerd_block_m8>
+	eeprom_read_block(_OwClient_ScratchPad,ERam,32);
+ 4ae:	82 e6       	ldi	r24, 0x62	; 98
+ 4b0:	90 e0       	ldi	r25, 0x00	; 0
+ 4b2:	61 e1       	ldi	r22, 0x11	; 17
+ 4b4:	70 e0       	ldi	r23, 0x00	; 0
+ 4b6:	40 e2       	ldi	r20, 0x20	; 32
+ 4b8:	50 e0       	ldi	r21, 0x00	; 0
+ 4ba:	05 d0       	rcall	.+10     	; 0x4c6 <__eerd_block_m8>
+	OwClient_Present();
+ 4bc:	5b de       	rcall	.-842    	; 0x174 <OwClient_Present>
+
+	_deviceQ_Is_Reset = 0;
+ 4be:	10 92 8a 00 	sts	0x008A, r1
+	while (1){
+		chek();
+ 4c2:	ce df       	rcall	.-100    	; 0x460 <chek>
+ 4c4:	fe cf       	rjmp	.-4      	; 0x4c2 <main+0x40>
+
+000004c6 <__eerd_block_m8>:
+ 4c6:	dc 01       	movw	r26, r24
+ 4c8:	cb 01       	movw	r24, r22
+
+000004ca <__eerd_blraw_m8>:
+ 4ca:	fc 01       	movw	r30, r24
+ 4cc:	e1 99       	sbic	0x1c, 1	; 28
+ 4ce:	fe cf       	rjmp	.-4      	; 0x4cc <__eerd_blraw_m8+0x2>
+ 4d0:	06 c0       	rjmp	.+12     	; 0x4de <__eerd_blraw_m8+0x14>
+ 4d2:	ff bb       	out	0x1f, r31	; 31
+ 4d4:	ee bb       	out	0x1e, r30	; 30
+ 4d6:	e0 9a       	sbi	0x1c, 0	; 28
+ 4d8:	31 96       	adiw	r30, 0x01	; 1
+ 4da:	0d b2       	in	r0, 0x1d	; 29
+ 4dc:	0d 92       	st	X+, r0
+ 4de:	41 50       	subi	r20, 0x01	; 1
+ 4e0:	50 40       	sbci	r21, 0x00	; 0
+ 4e2:	b8 f7       	brcc	.-18     	; 0x4d2 <__eerd_blraw_m8+0x8>
+ 4e4:	08 95       	ret
+
+000004e6 <__eewr_block_m8>:
+ 4e6:	dc 01       	movw	r26, r24
+ 4e8:	cb 01       	movw	r24, r22
+ 4ea:	02 c0       	rjmp	.+4      	; 0x4f0 <__eewr_block_m8+0xa>
+ 4ec:	2d 91       	ld	r18, X+
+ 4ee:	05 d0       	rcall	.+10     	; 0x4fa <__eewr_r18_m8>
+ 4f0:	41 50       	subi	r20, 0x01	; 1
+ 4f2:	50 40       	sbci	r21, 0x00	; 0
+ 4f4:	d8 f7       	brcc	.-10     	; 0x4ec <__eewr_block_m8+0x6>
+ 4f6:	08 95       	ret
+
+000004f8 <__eewr_byte_m8>:
+ 4f8:	26 2f       	mov	r18, r22
+
+000004fa <__eewr_r18_m8>:
+ 4fa:	e1 99       	sbic	0x1c, 1	; 28
+ 4fc:	fe cf       	rjmp	.-4      	; 0x4fa <__eewr_r18_m8>
+ 4fe:	9f bb       	out	0x1f, r25	; 31
+ 500:	8e bb       	out	0x1e, r24	; 30
+ 502:	2d bb       	out	0x1d, r18	; 29
+ 504:	0f b6       	in	r0, 0x3f	; 63
+ 506:	f8 94       	cli
+ 508:	e2 9a       	sbi	0x1c, 2	; 28
+ 50a:	e1 9a       	sbi	0x1c, 1	; 28
+ 50c:	0f be       	out	0x3f, r0	; 63
+ 50e:	01 96       	adiw	r24, 0x01	; 1
+ 510:	08 95       	ret
+
+00000512 <_exit>:
+ 512:	f8 94       	cli
+
+00000514 <__stop_program>:
+ 514:	ff cf       	rjmp	.-2      	; 0x514 <__stop_program>
